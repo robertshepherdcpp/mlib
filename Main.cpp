@@ -20,4 +20,5 @@ int main()
 	// mlib::select
 	std::tuple<char, bool, double> t3{ 'c', true, 3.142 };
 	auto tuple = mlib::select(t3, std::index_sequence<1, 2>{});
+	mlib::for_each(tuple, [](auto& t) {std::cout << "val: " << t << "\n"; });
 }
