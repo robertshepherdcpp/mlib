@@ -6,6 +6,7 @@
 #include "tuple.hpp"     // mlib::tuple
 #include "transform.hpp" // mlib::transform
 #include "select.hpp"    // mlib::select
+#include "find.hpp"      // mlib::find
 
 int main()
 {

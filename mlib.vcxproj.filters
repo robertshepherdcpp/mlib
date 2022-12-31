@@ -33,6 +33,12 @@
     <ClInclude Include="select.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="find.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="one_of.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
