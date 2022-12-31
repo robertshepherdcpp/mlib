@@ -39,6 +39,9 @@
     <ClInclude Include="one_of.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="all_of.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
