@@ -9,6 +9,16 @@ namespace mlib
 	{
 		T first{};
 		tuple<Ts...> second{};
+
+		auto operator==(tuple<T, Ts...>& t)
+		{
+			return first == t.first && second == t.second;
+		}
+
+		auto operator==(auto& t)
+		{
+			return false;
+		}
 	};
 
 	template<typename T>

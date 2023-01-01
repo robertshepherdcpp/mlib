@@ -2,16 +2,17 @@
 #include<iostream> // std::cout
 #include<utility> // std::make_index_sequence
 
-#include "for_each.hpp"  // mlib::for_each
-#include "tuple.hpp"     // mlib::tuple
-#include "transform.hpp" // mlib::transform
-#include "select.hpp"    // mlib::select
-#include "find.hpp"      // mlib::find
+#include "for_each.hpp"      // mlib::for_each
+#include "tuple.hpp"         // mlib::tuple
+#include "transform.hpp"     // mlib::transform
+#include "select.hpp"        // mlib::select
+#include "find.hpp"          // mlib::find
+#include "tuple_reverse.hpp" // mlib::tuple_reverse
 
 int main()
 {
 	// mlib::for_each
-	std::tuple<int, char, bool, double> t{42, 'c', true, 3.142};
+	std::tuple<int, char, bool, double> t{ 42, 'c', true, 3.142 };
 	mlib::for_each(t, [](auto& t) { std::cout << "val: " << t << "\n"; });
 
 	// mlib::transform
