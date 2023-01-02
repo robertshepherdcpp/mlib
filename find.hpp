@@ -39,13 +39,13 @@ namespace mlib
 	template<auto to_find, typename T, typename... Ts, std::size_t index, std::size_t... indexes>
 	constexpr auto find_helper(tuple<T, Ts...> tup, std::index_sequence<index, indexes...>)
 	{
-		if constexpr (get<index>(tup) == to_find)
+		if constexpr (mlib::get<index>(tup) == to_find)
 		{
 			return index;
 		}
 		else if constexpr (get<index>(tup) != to_find)
 		{
-			return find_helper<1, to_find, Ts..., indexes...>(tup.second, std::make_index_sequence<sizeof...(Ts)>{});
+			return find_helper<to_find, Ts..., indexes...>(tup.second, std::index_sequence<indexes...>{});
 		}
 	}
 
