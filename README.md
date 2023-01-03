@@ -47,4 +47,8 @@ An example use case is passing a lambda expression that outputs the elements in 
 std::tuple<int, char, bool, double> t{42, 'c', true, 3.142};
 mlib::for_each(t, [&](auto& a){std::cout << t << ", ";})
 ```
+And the output would be the following:
+```
+42, c, t, 1, 3.142,
+```
 
