@@ -45,6 +45,9 @@
     <ClInclude Include="tuple_reverse.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="fixed_string.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

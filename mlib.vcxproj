@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="all_of.hpp" />
     <ClInclude Include="find.hpp" />
+    <ClInclude Include="fixed_string.hpp" />
     <ClInclude Include="for_each.hpp" />
     <ClInclude Include="get.hpp" />
     <ClInclude Include="index_sequence.hpp" />
