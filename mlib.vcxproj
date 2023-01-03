@@ -140,6 +140,7 @@
     <ClInclude Include="one_of.hpp" />
     <ClInclude Include="Print.hpp" />
     <ClInclude Include="select.hpp" />
+    <ClInclude Include="traits.hpp" />
     <ClInclude Include="transform.hpp" />
     <ClInclude Include="tuple.hpp" />
     <ClInclude Include="tuple_reverse.hpp" />
