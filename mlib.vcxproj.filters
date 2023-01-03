@@ -48,6 +48,9 @@
     <ClInclude Include="fixed_string.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Print.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

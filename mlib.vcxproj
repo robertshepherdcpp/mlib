@@ -138,6 +138,7 @@
     <ClInclude Include="get.hpp" />
     <ClInclude Include="index_sequence.hpp" />
     <ClInclude Include="one_of.hpp" />
+    <ClInclude Include="Print.hpp" />
     <ClInclude Include="select.hpp" />
     <ClInclude Include="transform.hpp" />
     <ClInclude Include="tuple.hpp" />
