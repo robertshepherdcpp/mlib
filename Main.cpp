@@ -8,6 +8,7 @@
 #include "select.hpp"        // mlib::select
 #include "find.hpp"          // mlib::find
 #include "tuple_reverse.hpp" // mlib::tuple_reverse
+#include "constexpr_for.hpp" // mlib::constexpr_for
 
 int main()
 {
@@ -24,5 +25,8 @@ int main()
 	auto tuple = mlib::select(t3, std::index_sequence<1, 2>{});
 	mlib::for_each(tuple, [](auto& t) {std::cout << "val: " << t << "\n"; });
 
-	std::tuple<char, bool, int> t4{ 'c', true, 42 };
+	//mlib::constexpr_for < 0, []<typename T>(T t) { return t < 10; }, []<typename T>(T t) { return t + 1; } > a
+	//{
+	//	[]() {std::cout << "Hello!\n"; }
+	//};
 }

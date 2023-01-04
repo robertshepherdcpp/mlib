@@ -132,6 +132,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="all_of.hpp" />
+    <ClInclude Include="constexpr_for.hpp" />
+    <ClInclude Include="constexpr_while.hpp" />
     <ClInclude Include="find.hpp" />
     <ClInclude Include="fixed_string.hpp" />
     <ClInclude Include="for_each.hpp" />
