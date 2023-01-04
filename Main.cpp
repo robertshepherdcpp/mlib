@@ -9,6 +9,7 @@
 #include "find.hpp"          // mlib::find
 #include "tuple_reverse.hpp" // mlib::tuple_reverse
 #include "constexpr_for.hpp" // mlib::constexpr_for
+#include "constexpr_while.hpp"// mlib::constexpr_while
 
 int main()
 {
@@ -29,4 +30,6 @@ int main()
 	//{
 	//	[]() {std::cout << "Hello!\n"; }
 	//};
+
+	mlib::constexpr_while < 0, [&](int t) {t++; return t < 12; }, [&]() {std::cout << "Hello\n"; }, [](int t) {return t + 1; } > ();
 }
