@@ -26,10 +26,5 @@ int main()
 	auto tuple = mlib::select(t3, std::index_sequence<1, 2>{});
 	mlib::for_each(tuple, [](auto& t) {std::cout << "val: " << t << "\n"; });
 
-	//mlib::constexpr_for < 0, []<typename T>(T t) { return t < 10; }, []<typename T>(T t) { return t + 1; } > a
-	//{
-	//	[]() {std::cout << "Hello!\n"; }
-	//};
-
 	mlib::constexpr_while < 0, [&](int t) {t++; return t < 12; }, [&]() {std::cout << "Hello\n"; }, [](int t) {return t + 1; } > ();
 }

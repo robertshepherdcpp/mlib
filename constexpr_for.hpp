@@ -2,8 +2,10 @@
 
 #include<iostream>
 
+// Use constexpr while instead.
+
 namespace mlib
-{// constexpr for
+{
 
     template<auto... Values>
     struct sequence
@@ -11,8 +13,6 @@ namespace mlib
         constexpr auto operator()()
         {
             (Values(), ...);
-            // if a  value in Values is sequence, just call
-            // Values()
         }
     };
 
@@ -34,7 +34,6 @@ namespace mlib
     {
         if constexpr (condition(Val))
         {
-            // return sequence<to_do, make_sequence<operation(Val), condition, operation, to_do>{};
             return make_sequence_impl<condition(Val), condition, operation, to_do>();
         }
         else
