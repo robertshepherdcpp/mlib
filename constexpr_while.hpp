@@ -1,9 +1,9 @@
 #pragma once
 
-namespace mlib
-{
 #include<iostream>
 
+namespace mlib
+{
     template<auto Value, auto Condition, auto ToDo, auto operation>
     constexpr auto constexpr_while_helper()
     {
