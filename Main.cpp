@@ -28,4 +28,7 @@ int main()
 
 	// note need to add to to less than:                 --\/, will print one hello.
 	mlib::constexpr_while < 0, [&](int t) {t++; return t < 3; }, [&]() {std::cout << "Hello\n"; }, [](int t) {return t + 1; } > ();
+
+	// highest number of recursion.
+	mlib::constexpr_while < 0, [&](int t) {t++; return t < 501; }, [&]() {std::cout << "."; }, [](int t) {return t + 1; } > ();
 }
