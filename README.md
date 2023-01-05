@@ -63,13 +63,13 @@ This invokation, has a tuple t: `std::tuple<int, char, bool>` and then transform
 `mlib::transform`'s implementation looks like this:
 ```C++
 template<typename... Ts, std::size_t... indexes>
-auto transform_helper(std::tuple<Ts...>& t, auto& lambda, std::index_sequence<indexes...>& i_s)
+constexpr auto transform_helper(std::tuple<Ts...>& t, auto& lambda, std::index_sequence<indexes...>& i_s)
 {
     std::make_tuple(f(std::get<indexes>(t))...);
 }
 
 template<typename T, typename... Ts>
-auto transform(std::tuple<T, Ts...>& t, auto& lambda)
+constexpr auto transform(std::tuple<T, Ts...>& t, auto& lambda)
 {
     return transform_helper(t, lambda, std::make_index_sequence<sizeof...(Ts) + 1>{});
 }
