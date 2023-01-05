@@ -52,3 +52,27 @@ And the output would be the following:
 42, c, t, 1, 3.142,
 ```
 
+### `mlib::transform`
+`mlib::transform` is a `constexpr` function takes a given tuple, `t` and a given function `f` that transforms one of the elements inside of the tuple. An example invocation of `mlib::transfrom` looks like this:
+```C++
+std::tuple<int, char, bool> t{42, 'c', true};
+mlib::transform(t, [](auto& t){return decltype(t)(static_cast<int>(t));});
+```
+This invokation, has a tuple t: `std::tuple<int, char, bool>` and then transforms that tuple using the `[](auto& t){return decltype(t)(static_cast<int>(t));};`, and does so accordingly.
+
+`mlib::transform`'s implementation looks like this:
+```C++
+template<typename... Ts, std::size_t... indexes>
+constexpr auto transform_helper(std::tuple<Ts...>& t, auto& lambda, std::index_sequence<indexes...>& i_s)
+{
+    std::make_tuple(f(std::get<indexes>(t))...);
+}
+
+template<typename T, typename... Ts>
+constexpr auto transform(std::tuple<T, Ts...>& t, auto& lambda)
+{
+    return transform_helper(t, lambda, std::make_index_sequence<sizeof...(Ts) + 1>{});
+}
+```
+It is a very simple implementation, and `mlib::transform` is a great tool.
+
