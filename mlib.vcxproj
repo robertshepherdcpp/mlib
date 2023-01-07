@@ -134,6 +134,7 @@
     <ClInclude Include="all_of.hpp" />
     <ClInclude Include="constexpr_for.hpp" />
     <ClInclude Include="constexpr_while.hpp" />
+    <ClInclude Include="fibonacci.hpp" />
     <ClInclude Include="find.hpp" />
     <ClInclude Include="fixed_string.hpp" />
     <ClInclude Include="for_each.hpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="index_sequence.hpp" />
     <ClInclude Include="loop.hpp" />
     <ClInclude Include="one_of.hpp" />
+    <ClInclude Include="on_all.hpp" />
     <ClInclude Include="Print.hpp" />
     <ClInclude Include="select.hpp" />
     <ClInclude Include="traits.hpp" />

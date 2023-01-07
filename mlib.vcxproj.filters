@@ -69,6 +69,12 @@
     <ClInclude Include="tuple_inheritance.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="on_all.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fibonacci.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
