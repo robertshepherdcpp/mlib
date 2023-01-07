@@ -139,6 +139,7 @@
     <ClInclude Include="for_each.hpp" />
     <ClInclude Include="get.hpp" />
     <ClInclude Include="index_sequence.hpp" />
+    <ClInclude Include="loop.hpp" />
     <ClInclude Include="one_of.hpp" />
     <ClInclude Include="Print.hpp" />
     <ClInclude Include="select.hpp" />
