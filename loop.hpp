@@ -1,14 +1,17 @@
 #pragma once
 
-template<auto Num>
-struct loop
+namespace mlib
 {
-    constexpr loop(auto lambda)
+    template<auto Num>
+    struct loop
     {
-        lambda();
-        if constexpr (Num != 1)
+        constexpr loop(auto lambda)
         {
-            loop<Num - 1>{lambda};
+            lambda();
+            if constexpr (Num != 1)
+            {
+                loop<Num - 1>{lambda};
+            }
         }
-    }
-};
+    };
+} // namespace mlib
