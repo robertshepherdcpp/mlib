@@ -2,8 +2,13 @@
 
 #include<utility> // std::forward
 
+#include"get.hpp" // mlib::get
+
 namespace mlib
 {
+	template<std::size_t i>
+	struct index {};
+
 	template<typename T, typename... Ts>
 	struct tuple
 	{
@@ -18,6 +23,12 @@ namespace mlib
 		auto operator==(auto& t)
 		{
 			return false;
+		}
+
+		template <std::size_t I>
+		decltype(auto) operator[](index<I>)
+		{
+			return mlib::get<I>(*this);
 		}
 	};
 
