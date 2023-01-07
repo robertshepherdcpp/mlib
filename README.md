@@ -62,7 +62,7 @@ And the output would be the following:
 ```
 42, c, t, 1, 3.142,
 ```
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### `mlib::transform`
 `mlib::transform` is a `constexpr` function takes a given tuple, `t` and a given function `f` that transforms one of the elements inside of the tuple. An example invocation of `mlib::transfrom` looks like this:
 ```C++
@@ -76,7 +76,7 @@ This invokation, has a tuple t: `std::tuple<int, char, bool>` and then transform
 template<typename... Ts, std::size_t... indexes>
 constexpr auto transform_helper(std::tuple<Ts...>& t, auto& lambda, std::index_sequence<indexes...>& i_s)
 {
-    std::make_tuple(f(std::get<indexes>(t))...);
+    return std::make_tuple(f(std::get<indexes>(t))...);
 }
 
 template<typename T, typename... Ts>
