@@ -75,6 +75,9 @@
     <ClInclude Include="fibonacci.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="factorial.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
