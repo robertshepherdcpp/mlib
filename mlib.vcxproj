@@ -147,6 +147,7 @@
     <ClInclude Include="transform.hpp" />
     <ClInclude Include="tuple.hpp" />
     <ClInclude Include="tuple_reverse.hpp" />
+    <ClInclude Include="type.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
