@@ -134,6 +134,7 @@
     <ClInclude Include="all_of.hpp" />
     <ClInclude Include="constexpr_for.hpp" />
     <ClInclude Include="constexpr_while.hpp" />
+    <ClInclude Include="constructable_with.hpp" />
     <ClInclude Include="factorial.hpp" />
     <ClInclude Include="fibonacci.hpp" />
     <ClInclude Include="find.hpp" />

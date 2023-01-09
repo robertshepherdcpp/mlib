@@ -81,6 +81,9 @@
     <ClInclude Include="meta_struct.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="constructable_with.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
