@@ -84,6 +84,9 @@
     <ClInclude Include="constructable_with.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="refl_get.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

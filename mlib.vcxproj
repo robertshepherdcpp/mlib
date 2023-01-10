@@ -147,6 +147,7 @@
     <ClInclude Include="one_of.hpp" />
     <ClInclude Include="on_all.hpp" />
     <ClInclude Include="Print.hpp" />
+    <ClInclude Include="refl_get.hpp" />
     <ClInclude Include="select.hpp" />
     <ClInclude Include="traits.hpp" />
     <ClInclude Include="transform.hpp" />
