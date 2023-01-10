@@ -1,3 +1,5 @@
+#pragma once
+
 #include <cstddef>      // std::size_t
 #include <iostream>     // std::cout
 #include <type_traits>  // std::is_aggregate
