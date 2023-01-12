@@ -38,6 +38,10 @@ int main()
 
 	// highest number of recursion.
 	mlib::constexpr_while < 0, [&](int t) {t++; return t < 501; }, [&]() {std::cout << "."; }, [](int t) {return t + 1; } > ();
+	
+	struct foo { int a; double b; char c; };
+	foo f{42, 3.14, 'c'};
+	char c = std::get<2>(mlib::meta::refl_get<foo>(f));
 }
 ```
 # Documentation
