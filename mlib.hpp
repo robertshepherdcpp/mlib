@@ -1,5 +1,3 @@
-#pragma once
-
 #include"all_of.hpp"
 #include"amount.hpp"
 #include"constexpr_for.hpp"
