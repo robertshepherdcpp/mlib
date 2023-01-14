@@ -87,6 +87,9 @@
     <ClInclude Include="refl_get.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="amount.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
