@@ -145,6 +145,7 @@
     <ClInclude Include="index_sequence.hpp" />
     <ClInclude Include="loop.hpp" />
     <ClInclude Include="meta_struct.hpp" />
+    <ClInclude Include="mlib.hpp" />
     <ClInclude Include="one_of.hpp" />
     <ClInclude Include="on_all.hpp" />
     <ClInclude Include="Print.hpp" />
