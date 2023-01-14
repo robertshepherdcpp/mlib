@@ -38,6 +38,10 @@ int main()
 
 	// highest number of recursion.
 	mlib::constexpr_while < 0, [&](int t) {t++; return t < 501; }, [&]() {std::cout << "."; }, [](int t) {return t + 1; } > ();
+	
+	struct foo { int a; double b; char c; };
+	foo f{42, 3.14, 'c'};
+	char c = std::get<2>(mlib::meta::refl_get<foo>(f));
 }
 ```
 # Documentation
@@ -87,3 +91,23 @@ constexpr auto transform(std::tuple<T, Ts...>& t, auto& lambda)
 ```
 It is a very simple implementation, and `mlib::transform` is a great tool.
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+### `mlib::fixed_string`.
+`mlib::transform` is a string that can be used at compile time, so the size needs to be known at compile time and needs to be passed as an [NTTP](https://stackoverflow.com/questions/70924025/c20-nttp-specialization) or it can be infered by the `constexpr` constructor. Here is how you would have a compile time string, using `fixed_string`:
+```C++
+fixed_string<6> f{"hello"}; // note that `fixed_string` has a `constexpr` constructor taking an array.
+```
+The only hardship is specifying the [NTTP](https://stackoverflow.com/questions/70924025/c20-nttp-specialization). An example implementation of `fixed_string` is like this:
+```C++
+template<auto I> // I is the size of the string
+struct fixed_string
+{
+  // notice the constexpr constructor.
+  constexpr fixed_string(char(&arr)[I])
+  {
+    // copies `arr` into `m_data`
+  }
+  
+  char m_data[I] = {};
+};
+```
