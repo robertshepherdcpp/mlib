@@ -1,3 +1,6 @@
+#ifndef MLIB_HPP
+#define MLIB_HPP
+
 #include"all_of.hpp"
 #include"amount.hpp"
 #include"constexpr_for.hpp"
@@ -23,3 +26,5 @@
 #include"tuple_inheritance.hpp"
 #include"tuple_reverse.hpp"
 #include"type.hpp"
+
+#endif
