@@ -11,6 +11,7 @@
 #include "constexpr_for.hpp"  // mlib::constexpr_for
 #include "constexpr_while.hpp"// mlib::constexpr_while
 #include "refl_get.hpp"       // mlib::refl_get
+#include "get_nth_element.hpp" // mlib::get_nth_element
 
 int main()
 {
@@ -36,4 +37,6 @@ int main()
 	struct foo { int a; double b; char c; };
 	foo f{42, 3.14, 'c'};
 	char c = std::get<2>(mlib::meta::refl_get<foo>(f));
+
+	std::cout << mlib::get_nth_element<2>(42, 'c', 3.14, true); // returns 3.14
 }
