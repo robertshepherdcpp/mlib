@@ -93,6 +93,9 @@
     <ClInclude Include="mlib.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="get_nth_element.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
