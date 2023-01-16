@@ -113,3 +113,17 @@ struct fixed_string
   char m_data[I] = {};
 };
 ```
+-----------------------------------------------------------------------------------------------
+### `Print.hpp`
+`Print` is a function that takes a variadic amount of arguements and prints them out to the console using `std::cout`. And example use case is as follows:
+```C++
+Print(42, std::string(" is a number, and "), 'c' std::string("is a character"));
+```
+It is very easy to use, an example implementation looks as follows:
+```C++
+auto print(auto... t)
+{
+  (std::cout << t, ...);
+}
+```
+---------------------------------------------------------------------------------------------------
