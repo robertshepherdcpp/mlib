@@ -115,9 +115,9 @@ struct fixed_string
 ```
 -----------------------------------------------------------------------------------------------
 ### `mlib::Print.hpp`
-`Print` is a function that takes a variadic amount of arguements and prints them out to the console using `std::cout`. And example use case is as follows:
+`mlib::Print` is a function that takes a variadic amount of arguements and prints them out to the console using `std::cout`. And example use case is as follows:
 ```C++
-Print(42, std::string(" is a number, and "), 'c' std::string("is a character"));
+mlib::Print(42, std::string(" is a number, and "), 'c' std::string("is a character"));
 ```
 It is very easy to use, an example implementation looks as follows:
 ```C++
@@ -127,3 +127,32 @@ auto print(auto... t)
 }
 ```
 ---------------------------------------------------------------------------------------------------
+### `mlib::all_of`
+`mlib::all_of` is a simple feature that checks if all of the booleans, `bools` passed in are all `true`. A simple example is as follows:
+```C++
+mlib::all_of(true, true, 6 == 6, true, 42 == 0, true); // false
+```
+Another example is as follows:
+```C++
+mlib::all_of(true, true, true, true); // true
+```
+So it is a very useful feature, and can be used in many different ways, and example implementation of `mlib::all_of` is as follows:
+```C++
+#pragma once
+
+namespace mlib
+{
+	template<bool b, bool... bs>
+	struct all_of
+	{
+		static constexpr auto value = b && all_of<bs...>::value;
+	};
+
+	template<bool b>
+	struct all_of<b>
+	{
+		static constexpr auto value = b;
+	};
+} // namespace mlib
+```
+---------------------------------------------------------------------------------------------------------------------------------
