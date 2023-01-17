@@ -114,7 +114,7 @@ struct fixed_string
 };
 ```
 -----------------------------------------------------------------------------------------------
-### `Print.hpp`
+### `mlib::Print.hpp`
 `Print` is a function that takes a variadic amount of arguements and prints them out to the console using `std::cout`. And example use case is as follows:
 ```C++
 Print(42, std::string(" is a number, and "), 'c' std::string("is a character"));
