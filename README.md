@@ -138,8 +138,6 @@ mlib::all_of(true, true, true, true); // true
 ```
 So it is a very useful feature, and can be used in many different ways, and example implementation of `mlib::all_of` is as follows:
 ```C++
-#pragma once
-
 namespace mlib
 {
 	template<bool b, bool... bs>
