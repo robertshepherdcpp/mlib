@@ -113,3 +113,74 @@ struct fixed_string
   char m_data[I] = {};
 };
 ```
+-----------------------------------------------------------------------------------------------
+### `mlib::Print.hpp`
+`mlib::Print` is a function that takes a variadic amount of arguements and prints them out to the console using `std::cout`. And example use case is as follows:
+```C++
+mlib::Print(42, std::string(" is a number, and "), 'c' std::string("is a character"));
+```
+It is very easy to use, an example implementation looks as follows:
+```C++
+auto print(auto... t)
+{
+  (std::cout << t, ...);
+}
+```
+---------------------------------------------------------------------------------------------------
+### `mlib::all_of`
+`mlib::all_of` is a simple feature that checks if all of the booleans, `bools` passed in are all `true`. A simple example is as follows:
+```C++
+mlib::all_of(true, true, 6 == 6, true, 42 == 0, true); // false
+```
+Another example is as follows:
+```C++
+mlib::all_of(true, true, true, true); // true
+```
+So it is a very useful feature, and can be used in many different ways, and example implementation of `mlib::all_of` is as follows:
+```C++
+namespace mlib
+{
+	template<bool b, bool... bs>
+	struct all_of
+	{
+		static constexpr auto value = b && all_of<bs...>::value;
+	};
+
+	template<bool b>
+	struct all_of<b>
+	{
+		static constexpr auto value = b;
+	};
+} // namespace mlib
+```
+---------------------------------------------------------------------------------------------------------------------------------
+### `mlib::amount.hpp`
+
+`mlib::amount` allows you do do things like you would do in a run time loop but at compile time. You can specify the number of recursions in the `<>` template parameter part. It is a very easy think to use, and can happen at compile time, as long as the callable passed in can run at compile time. Here is an example usage:
+```C++
+  amount<10>.times([](){std::cout << "hello" << "\n";} // note that this doesn't happen at compile time
+  amount<10>.times([](){0 + 257;}                      // happens at compile time, but the result isn't really observable.
+```
+So, as shown it is a very useful feature. An example implementation is as follows:
+```C++
+    template<auto T>
+    struct amount
+    {
+        constexpr auto times(auto&& lambda) const;
+    };
+
+    template<auto T>
+    static constexpr auto amount_t = amount<T>{};
+
+    template<auto T>
+    constexpr auto amount<T>::times(auto&& lambda) const
+    {
+        lambda();
+        if constexpr (T - 1 != 0)
+        {
+            amount_t<T - 1>.times(lambda);
+        }
+        return true;
+    }
+```
+-----------------------------------------------------------------------------------------------------------------------------------------------
