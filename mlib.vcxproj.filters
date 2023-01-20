@@ -96,6 +96,9 @@
     <ClInclude Include="get_nth_element.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="inlin_if.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
