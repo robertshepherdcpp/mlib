@@ -15,6 +15,12 @@ namespace mlib
         static constexpr bool value = true;
     };
 
+    template<auto T, auto B>
+    struct is_same_value
+    {
+        static constexpr auto value = (T == B);
+    };
+
     template <typename T, typename condition, typename ToCompare, auto first_,
         auto second_>
     struct inline_if {
@@ -45,4 +51,22 @@ namespace mlib
             static constexpr auto first = first_;
             static constexpr auto second = second_;
         };
+
+        template<auto T, auto ToCompare, auto first_, auto second_>
+        struct inline_if<T, is_same_value<T, ToCompare>, ToCompare, first_, second_>
+        {
+            constexpr inline_if() {}
+
+            constexpr auto get() {
+                if constexpr (is_same<T, ToCompare>::value) {
+                    return first;
+                }
+                else if constexpr (!is_same<T, ToCompare>::value) {
+                    return second;
+                }
+                constexpr auto operator()() { return get(); }
+
+                static constexpr auto first = first_;
+                static constexpr auto second = second_;
+            };
     } // namespace mlib
