@@ -5,7 +5,7 @@ namespace mlib
 	template<bool b, bool... bs>
 	struct all_of
 	{
-		static constexpr auto value = b && all_of<bs...>::value;
+		static constexpr auto value = (b && bs...);
 	};
 
 	template<bool b>
