@@ -10,7 +10,7 @@
 
 namespace mlib {
 
-    template <auto I> struct index {};
+    template <auto I> struct index_pack {};
 
     template <auto... Ts> struct value_pack {
 
@@ -24,7 +24,7 @@ namespace mlib {
         constexpr auto begin() { return begin_value; }
         constexpr auto end() { return end_value; };
 
-        template <auto I> constexpr auto operator[](index<I>) {
+        template <auto I> constexpr auto operator[](index_pack<I>) {
             return mlib::get_nth_element<I>(Ts...);
         }
 

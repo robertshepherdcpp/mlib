@@ -12,6 +12,7 @@
 #include "constexpr_while.hpp"// mlib::constexpr_while
 #include "refl_get.hpp"       // mlib::refl_get
 #include "get_nth_element.hpp" // mlib::get_nth_element
+#include "pack.hpp"            // mlib::value_pack
 
 int main()
 {
@@ -36,10 +37,12 @@ int main()
 
 	struct foo { int a; double b; char c; };
 	foo f{42, 3.14, 'c'};
-	auto x = (mlib::meta::refl_get<foo>(f));
-	std::cout << std::get<0>(x);
+	//auto x = (mlib::meta::refl_get<foo>(f));
+	//std::cout << std::get<0>(x);
 
-	std::cout << mlib::get_nth_element<2>(42, 'c', 3.14, true); // returns 3.14
+	std::cout << mlib::get_nth_element<2>(42, 'c', 3.14, true) << "\n"; // returns 3.14
 
-	
+	mlib::value_pack<42, 'c', 3.142, true> v{};
+	std::cout << v[mlib::index_pack<2>{}] << "\n";
+	std::cout << v.begin() << "\n";
 }
