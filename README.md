@@ -184,3 +184,28 @@ So, as shown it is a very useful feature. An example implementation is as follow
     }
 ```
 -----------------------------------------------------------------------------------------------------------------------------------------------
+### `mlib::one_of`
+
+`mlib::one_of` is a compile time `or`. You pass in a bunch of bools, and if one of then is `true`, the value that the class `mlib::one_of` holds will be `true`. An example use of `mlib::one_of` is as follows:
+```C++
+bool b = mlib::one_of<false, false, false>::value; // b == false
+bool c = mlib::one_of<false, false, true, false, false>::value; // c == true
+```
+So it is very easy to use. An example implementation of `mlib::one_of` is as follows:
+```C++
+namespace mlib
+{
+	template<bool b, bool... b>
+	struct one_of
+	{
+		static constexpr bool value = (b || b...);
+	};
+
+	template<bool b>
+	struct one_of
+	{
+		static constexpr bool value = b;
+	};
+} // namespace mlib
+```
+And thats it for its implementation, note that it's implementation is not recursive!
