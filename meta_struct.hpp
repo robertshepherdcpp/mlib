@@ -31,6 +31,7 @@ namespace mlib
     template<typename... Members>
     struct meta_struct : Members...
     {
+        static constexpr auto members_size = (sizeof(Members) + ... + 0);
     };
 
     template<fixed_string tag, typename T>
