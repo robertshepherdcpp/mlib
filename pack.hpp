@@ -54,6 +54,17 @@ namespace mlib {
             return mlib::get_nth_element<I>(Ts...);
         }
 
+        template<auto... i>
+        constexpr auto for_each_helper(auto& lambda, std::index_sequence<i...>)
+        {
+            return mlib::value_pack<lambda(mlib::get_nth_element<i>())...>{};
+        }
+
+        constexpr auto for_each(auto& lambda)
+        {
+            return for_each_helper(lambda, std::make_index_sequence < sizeof...(Ts)>{});
+        }
+
         template <auto I>
         constexpr auto get() {
             return mlib::get_nth_element<I>(Ts...);
