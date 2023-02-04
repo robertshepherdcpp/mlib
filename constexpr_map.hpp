@@ -1,5 +1,7 @@
 #pragma once
 
+#include"constant_parameter.hpp"
+
 namespace mlib
 {
     template<typename A, typename B>
@@ -13,11 +15,6 @@ namespace mlib
     struct single_member_map
     {
         A first;
-    };
-
-    template<auto X>
-    struct constant_parameter
-    {
     };
 
     template<auto... members>

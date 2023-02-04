@@ -108,6 +108,9 @@
     <ClInclude Include="constexpr_map.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="constant_parameter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
