@@ -37,5 +37,7 @@ namespace mlib
         {
             return get_nth_element<X>(members...).second;
         }
+
+        static constexpr auto size = (sizeof(members) + ... + 0);
     };
 } // namespace mlib
