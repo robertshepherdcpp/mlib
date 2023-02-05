@@ -1,43 +1,39 @@
-#pragma once
-
-#include"constant_parameter.hpp"
+#include <algorithm>
+#include <concepts>
+#include <cstddef>
+#include <iostream>
+#include <type_traits>
+#include <utility>
 
 namespace mlib
 {
-    template<typename A, typename B>
-    struct member_map
-    {
-        A first;
-        B second;
+    template <auto X> struct constexpr_parameter {};
+
+    template <auto A, auto B> struct member_map {
+        constexpr auto operator[](constant_parameter<A>) const noexcept {
+            return B;
+        }
     };
 
-    template<typename A>
-    struct single_member_map
+    // a member with a variadic number of elements, not used here though.
+    template <auto... members_of> struct variadic_member
     {
-        A first;
+
     };
 
-    template<auto... members>
-    struct constexpr_map : decltype(members)...
+    template<auto members> struct single_member
     {
-        template<auto X>
-        constexpr auto operator[](constant_parameter<X>)
+        constexpr auto operator[](constant_parameter<members>) const noexcept
         {
-            return get_nth_element<X>(members...).first;
+            return members;
         }
+    };
 
-        template<auto X>
-        constexpr auto first(constant_parameter<X>)
-        {
-            return get_nth_element<X>(members...).first;
+    template <auto... members> struct constexpr_map : decltype(members)... {
+        using decltype(members)::operator[]...;
+
+        template <auto T> constexpr auto lookup() const noexcept {
+            return this->operator[](constexpr_parameter<T>{});
         }
-
-        template<auto X>
-        constexpr auto second(constant_parameter<X>)
-        {
-            return get_nth_element<X>(members...).second;
-        }
-
-        static constexpr auto size = (sizeof(members) + ... + 0);
     };
 } // namespace mlib
