@@ -13,6 +13,7 @@
 #include "refl_get.hpp"       // mlib::refl_get
 #include "get_nth_element.hpp" // mlib::get_nth_element
 #include "pack.hpp"            // mlib::value_pack
+#include "constexpr_map.hpp"   // mlib::constexpr_map
 
 int main()
 {
@@ -45,4 +46,11 @@ int main()
 	mlib::value_pack<42, 'c', 3.142, true> v{};
 	std::cout << v[mlib::index_pack<2>{}] << "\n";
 	std::cout << v.begin() << "\n";
+
+	mlib::constexpr_map < mlib::member_map<42, 'c'>{}, mlib::member_map<true, 3.142>{} > map{};
+
+	std::cout << map[mlib::constexpr_parameter<true>{}];
+
+	constexpr auto z = map.lookup<42>();
+	std::cout << z;
 }
