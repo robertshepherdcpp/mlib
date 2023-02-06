@@ -6,7 +6,10 @@
 
 namespace mlib
 {
-    template <auto X> struct constexpr_parameter {};
+    template <auto X> struct constexpr_parameter 
+    {
+        using type = decltype(X);
+    };
 
     template <auto A, auto B> struct member_map {
         constexpr auto operator[](constexpr_parameter<A>) const noexcept {
@@ -33,12 +36,18 @@ namespace mlib
         using members::operator[]...;
     };
 
-    template <auto... members> 
-    struct constexpr_map : decltype(members)...
+    template<typename T>
+    struct constexpr_map_base_
     {
+        using type = decltype(componentContainer<T>());
+    };
+
+    template <auto... members>
+    struct constexpr_map : constexpr_parameter<members>::type... {
         using decltype(members)::operator[]...;
 
-        template <auto T> constexpr auto lookup() const noexcept {
+        template <auto T>
+        constexpr auto lookup() const noexcept {
             return this->operator[](constexpr_parameter<T>{});
         }
     };
