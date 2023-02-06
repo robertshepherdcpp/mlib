@@ -153,6 +153,7 @@
     <ClInclude Include="mlib.hpp" />
     <ClInclude Include="one_of.hpp" />
     <ClInclude Include="on_all.hpp" />
+    <ClInclude Include="overload.hpp" />
     <ClInclude Include="pack.hpp" />
     <ClInclude Include="Print.hpp" />
     <ClInclude Include="refl_get.hpp" />

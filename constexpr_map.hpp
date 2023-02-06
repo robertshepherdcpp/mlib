@@ -27,8 +27,14 @@ namespace mlib
         }
     };
 
+    template<typename... members>
+    struct inheriter : members...
+    {
+        using members::operator[]...;
+    };
+
     template <auto... members> 
-    struct constexpr_map : decltype(members)... 
+    struct constexpr_map : decltype(members)...
     {
         using decltype(members)::operator[]...;
 
