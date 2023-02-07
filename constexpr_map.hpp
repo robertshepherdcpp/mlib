@@ -11,6 +11,9 @@ namespace mlib
         using type = decltype(X);
     };
 
+    template<auto T>
+    static constexpr auto c_p = constexpr_parameter<T>{};
+
     template <auto A, auto B> struct member_map {
         constexpr auto operator[](constexpr_parameter<A>) const noexcept {
             return B;
