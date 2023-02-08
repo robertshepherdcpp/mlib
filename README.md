@@ -209,3 +209,34 @@ namespace mlib
 } // namespace mlib
 ```
 And thats it for its implementation, note that it's implementation is not recursive!
+-----------------------------------------------------------------------------------------------------------------------------------------------
+### `mlib::constexpr_map`
+
+`mlib::constexpr_map` is a compile-time map that also allows compile time lookup using the `operator[]` which takes a `mlib::constexpr_parameter` as it's compile time arguement and a `constexpr` lookup function `lookup` which takes the value to be looked up as a non type template parameter. It has a very cool implementation here is a watered down version of what it looks like:
+```C++
+template<auto T> struct constexpr_parameter {using type = decltype(T);}
+
+template<auto A, auto B> struct member_map {
+   constexpr auto operator[](constexpr_parameter<A>)
+   {
+     return B;
+   }
+};
+
+template<auto... members> struct constexpr_map : constexpr_parameter<members>::type...
+{
+  using decltype(members)::operator[]...;
+  // note lookup is missed out here
+};
+```
+But as you can see it is a very cool implementation. Now onto some examples using `mlib::constexpr_map`:
+```C++
+mlib::constexpr_map<mlib::member_map<'c', 4>{}, mlib::member_map<true, 42>{}> map{};
+std::cout << map[mlib::c_p<'c'>];
+```
+Note that here we are using `mlib::c_p` which is just a `mlib::constexpr_parameter` it looks like this:
+```C++
+template<auto T>
+constexpr auto c_p = constant_parameter<T>{};
+```
+So in conclusion, `mlib::constexpr_map` is a really cool feature, the only problem is that the map is `constexpr` so therefore cannot add values, change values, etc.
