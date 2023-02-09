@@ -2,8 +2,9 @@
 
 namespace mlib
 {
-	template<auto... Ts>
+	template<typename... Ts>
 	struct overload : Ts...
 	{
+		using Ts::operator()...;
 	};
 } // namespace mlib
