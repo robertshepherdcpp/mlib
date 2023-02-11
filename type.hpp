@@ -2,21 +2,21 @@
 
 namespace mlib
 {
-	template<typename T>
-	struct type
-	{
-		auto operator==(auto& t)
-			requires(decltype(t){} == T)
-		{
-			return true;
-		}
+    template<typename T>
+    struct type_t
+    {
+        constexpr auto operator==(type_t<T>) const
+        {
+            return true;
+        }
+        constexpr auto operator==(auto) const
+        {
+            return false;
+        }
 
-		auto operator==()
-		{
-			return false;
-		}
-	};
+        constexpr type_t() {}
+    };
 
-	template<typename T>
-	static constexpr type<T> type_c = type<T>{};
+    template<typename T>
+    static constexpr auto type = type_t<T>{};
 } // namespace mlib
