@@ -1,7 +1,6 @@
 #pragma once
 
 #include <iostream>
-#include <variant>
 
 namespace mlib
 {
