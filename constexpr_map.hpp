@@ -76,7 +76,7 @@ namespace mlib {
         }
 
         constexpr auto get_values() noexcept {
-            [] <std::size_t... indexes>(std::index_sequence<indexes...>) {
+            return [] <std::size_t... indexes>(std::index_sequence<indexes...>) {
                 return std::make_tuple(
                     (mlib::get_nth_element<indexes>(members...).value())...);
             }(std::make_index_sequence<sizeof...(members)>{});
