@@ -1,4 +1,5 @@
 #include<cstddef>
+#include<algorithm>
 
 namespace mlib
 {
@@ -9,6 +10,8 @@ namespace mlib
         {
             std::copy_n(arr, i + 1, data);
         }
+
+        constexpr auto size() const { return i; }
 
         auto operator<=>(const fixed_string&) const = default;
 
