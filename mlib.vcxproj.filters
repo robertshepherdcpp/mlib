@@ -120,6 +120,9 @@
     <ClInclude Include="operation_stack.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="value_sequence.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

@@ -166,6 +166,7 @@
     <ClInclude Include="tuple_inheritance.hpp" />
     <ClInclude Include="tuple_reverse.hpp" />
     <ClInclude Include="type.hpp" />
+    <ClInclude Include="value_sequence.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
