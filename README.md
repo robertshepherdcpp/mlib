@@ -253,3 +253,11 @@ struct a
 };
 ```
 and so if pass an instance of `a` like this: `a A{42, 'c', true};` to `refl_get` we will get a tuple with the contents of `std::tuple<int, char, bool>{42, 'c', true}`! It is as easy as that to reflect this!
+
+It looks like this:
+```C++
+constexpr auto refl_get(auto& t)
+{
+  // implementation
+}
+```
