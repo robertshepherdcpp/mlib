@@ -45,6 +45,11 @@ namespace mlib {
     struct constexpr_map : constexpr_parameter<members>::type... {
         using decltype(members)::operator[]...;
 
+        template<auto T> constexpr auto get_member() const noexcept -> decltype(auto)
+        {
+            return mlib::get_nth_element<T>(members...);
+        }
+
         template <auto T> constexpr auto lookup() const noexcept {
             return this->operator[](constexpr_parameter<T>{});
         }
