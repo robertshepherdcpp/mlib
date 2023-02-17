@@ -240,3 +240,15 @@ template<auto T>
 constexpr auto c_p = constant_parameter<T>{};
 ```
 So in conclusion, `mlib::constexpr_map` is a really cool feature, the only problem is that the map is `constexpr` so therefore cannot add values, change values, etc.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+### `mlib::refl_get`
+`mlib::relf_get` is a useful reflection, that gets all of the members out of a `struct` for example if you had a struct `a`:
+```C++
+struct a
+{
+  int a;
+  char c;
+  bool b;
+};
+```
+and so if pass an instance of `a` like this: `a A{42, 'c', true};` to `refl_get` we will get a tuple with the contents of `std::tuple<int, char, bool>{42, 'c', true}`! It is as easy as that to reflect this!
