@@ -59,27 +59,27 @@ namespace mlib {
         }
 
         template <auto T>
-        constexpr auto has_value(constexpr_parameter<T>) noexcept {
+        constexpr auto has_value(constexpr_parameter<T>) const noexcept {
             return[]<std::size_t... indexes>(std::index_sequence<indexes...>) {
                 return ((mlib::get_nth_element<indexes>(members...).template has_value<T>() || ...)) || get_nth_element<sizeof...(members) - 1>(members...).template has_value<T>();
             }(std::make_index_sequence<sizeof...(members) - 1>{});
         }
 
         template <auto T>
-        constexpr auto has_key(constexpr_parameter<T>) noexcept {
+        constexpr auto has_key(constexpr_parameter<T>) const noexcept {
             return[]<std::size_t... indexes>(std::index_sequence<indexes...>) {
                 return ((mlib::get_nth_element<indexes>(members...).template has_key<T>() || ...)) || get_nth_element<sizeof...(members) - 1>(members...).template has_key<T>();
             }(std::make_index_sequence<sizeof...(members) - 1>{});
         }
 
-        constexpr auto get_keys() noexcept {
+        constexpr auto get_keys() const noexcept {
             return[]<std::size_t... indexes>(std::index_sequence<indexes...>) {
                 return std::make_tuple(
                     (mlib::get_nth_element<indexes>(members...).key())...);
             }(std::make_index_sequence<sizeof...(members)>{});
         }
 
-        constexpr auto get_values() noexcept {
+        constexpr auto get_values() const noexcept {
             return [] <std::size_t... indexes>(std::index_sequence<indexes...>) {
                 return std::make_tuple(
                     (mlib::get_nth_element<indexes>(members...).value())...);
