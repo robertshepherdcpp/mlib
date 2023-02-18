@@ -15,7 +15,7 @@ namespace mlib {
             return value_range<lambda(Ts)...>{};
         }
 
-        template <auto I> constexpr auto at() const { return std::get<I>(tuple()); }
+        template <auto I> constexpr auto at() const { return get_nth_element(Ts...); }
 
         constexpr auto tuple() const { return std::make_tuple(Ts...); }
     };
