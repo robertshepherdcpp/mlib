@@ -17,4 +17,7 @@ namespace mlib
 
         char data[i + 1] = {};
     };
+
+    template<std::size_t i>
+    fixed_string(const char(&arr)[i])->fixed_string<i - 1>;
 } // namespace mlib
