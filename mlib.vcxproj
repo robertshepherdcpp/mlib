@@ -139,6 +139,7 @@
     <ClInclude Include="constexpr_switch.hpp" />
     <ClInclude Include="constexpr_while.hpp" />
     <ClInclude Include="constructable_with.hpp" />
+    <ClInclude Include="enumerate_pack.hpp" />
     <ClInclude Include="factorial.hpp" />
     <ClInclude Include="fibonacci.hpp" />
     <ClInclude Include="find.hpp" />

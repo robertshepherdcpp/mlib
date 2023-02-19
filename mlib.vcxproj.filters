@@ -126,6 +126,9 @@
     <ClInclude Include="value_range.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="enumerate_pack.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
