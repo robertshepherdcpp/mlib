@@ -72,7 +72,7 @@ namespace mlib {
             return mlib::get_nth_element<I>(Ts...);
         }
 
-        value_pack() { /*Does Nothing!*/
+        constexpr value_pack() { /*Does Nothing!*/
         }
     };
 }  // namespace mlib
