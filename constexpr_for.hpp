@@ -1,6 +1,5 @@
-#pragma once
-
 // Use constexpr while instead.
+#pragma once
 
 namespace mlib
 {
@@ -23,7 +22,7 @@ namespace mlib
         }
         else
         {
-            return sequence{ operations... };
+            return sequence<operations...>{};
         }
     }
 
