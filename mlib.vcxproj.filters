@@ -129,6 +129,9 @@
     <ClInclude Include="enumerate_pack.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="string_manip.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

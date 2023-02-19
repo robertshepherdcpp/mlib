@@ -161,6 +161,7 @@
     <ClInclude Include="Print.hpp" />
     <ClInclude Include="refl_get.hpp" />
     <ClInclude Include="select.hpp" />
+    <ClInclude Include="string_manip.hpp" />
     <ClInclude Include="traits.hpp" />
     <ClInclude Include="transform.hpp" />
     <ClInclude Include="tuple.hpp" />
