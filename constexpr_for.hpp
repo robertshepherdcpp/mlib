@@ -55,4 +55,4 @@ namespace mlib
             x(s);
         }
     };
-}
+} // namespace mlib
