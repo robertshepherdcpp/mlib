@@ -37,6 +37,8 @@ namespace mlib {
         constexpr auto get() {
             return mlib::get_nth_element<T>((Ts{})...);
         }
+
+        constexpr type_pack() {}
     };
 
     template <auto... Ts>
