@@ -38,8 +38,8 @@ int main()
 
 	struct foo { int a; double b; char c; };
 	foo f{42, 3.14, 'c'};
-	//auto x = (mlib::meta::refl_get<foo>(f));
-	//std::cout << std::get<0>(x);
+	auto x = mlib::meta::refl_get<foo>(f);
+	std::cout << std::get<0>(x);
 
 	std::cout << mlib::get_nth_element<2>(42, 'c', 3.14, true) << "\n"; // returns 3.14
 
