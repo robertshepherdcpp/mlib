@@ -69,12 +69,6 @@
     <ClInclude Include="on_all.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="fibonacci.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="factorial.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="meta_struct.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
