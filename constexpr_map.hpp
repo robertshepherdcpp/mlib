@@ -29,18 +29,6 @@ namespace mlib {
         template<auto X> constexpr auto has_value() { return X == B; }
     };
 
-    template<bool T>
-    constexpr auto is_not_void(constexpr_parameter<T>)
-    {
-        return true;
-    }
-
-    template<auto T>
-    constexpr auto is_not_void(constexpr_parameter<T>)
-    {
-        return false;
-    }
-
     template <auto... members>
     struct constexpr_map : constexpr_parameter<members>::type... {
         using decltype(members)::operator[]...;
