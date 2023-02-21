@@ -150,7 +150,6 @@
     <ClInclude Include="integral_constant.hpp" />
     <ClInclude Include="loop.hpp" />
     <ClInclude Include="meta_struct.hpp" />
-    <ClInclude Include="mlib.hpp" />
     <ClInclude Include="one_of.hpp" />
     <ClInclude Include="on_all.hpp" />
     <ClInclude Include="operation_stack.hpp" />
@@ -159,7 +158,6 @@
     <ClInclude Include="refl_get.hpp" />
     <ClInclude Include="select.hpp" />
     <ClInclude Include="string_manip.hpp" />
-    <ClInclude Include="traits.hpp" />
     <ClInclude Include="transform.hpp" />
     <ClInclude Include="tuple.hpp" />
     <ClInclude Include="tuple_inheritance.hpp" />

@@ -48,9 +48,6 @@
     <ClInclude Include="fixed_string.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="traits.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="constexpr_for.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -79,9 +76,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="amount.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mlib.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="get_nth_element.hpp">
