@@ -5,6 +5,9 @@
 
 namespace mlib
 {
+    template<auto T>
+    struct c_p { using type = decltype(T); };
+
     template<std::size_t i>
     struct fixed_string
     {
@@ -27,6 +30,19 @@ namespace mlib
         static constexpr auto tag() { return str; }
         T value;
     };
+
+    template<fixed_string str>
+    struct value_
+    {
+        template<auto t>
+        constexpr auto operator=(c_p<t>)
+        {
+            return member<str, t>{};
+        }
+    };
+
+    template<fixed_string T>
+    inline constexpr auto value = value_<T>{};
 
     template<typename... Members>
     struct meta_struct : Members...
