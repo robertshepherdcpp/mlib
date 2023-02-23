@@ -14,6 +14,7 @@
 #include "get_nth_element.hpp" // mlib::get_nth_element
 #include "pack.hpp"            // mlib::value_pack
 #include "constexpr_map.hpp"   // mlib::constexpr_map
+#include "count_if.hpp"        // mlib::count_if
 
 int main()
 {
@@ -53,4 +54,7 @@ int main()
 
 	constexpr auto z = map.lookup<42>();
 	std::cout << z;
+
+	std::tuple tuple_count{ 0, 31.4, 5, true, 'c' };
+	std::cout << mlib::count_if([](auto t) {return t > 0; }, tuple_count);
 }
