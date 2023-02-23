@@ -17,6 +17,10 @@ mlib is a fast, simple c++ meta-programming library that uses c++20.
 #include "tuple_reverse.hpp"  // mlib::tuple_reverse
 #include "constexpr_for.hpp"  // mlib::constexpr_for
 #include "constexpr_while.hpp"// mlib::constexpr_while
+#include "refl_get.hpp"       // mlib::refl_get
+#include "get_nth_element.hpp" // mlib::get_nth_element
+#include "pack.hpp"            // mlib::value_pack
+#include "constexpr_map.hpp"   // mlib::constexpr_map
 
 int main()
 {
@@ -33,17 +37,29 @@ int main()
 	auto tuple = mlib::select(t3, std::index_sequence<1, 2>{});
 	mlib::for_each(tuple, [](auto& t) {std::cout << "val: " << t << "\n"; });
 
-	// note need to add to to less than:                 --\/, will print one hello.
-	mlib::constexpr_while < 0, [&](int t) {t++; return t < 3; }, [&]() {std::cout << "Hello\n"; }, [](int t) {return t + 1; } > ();
+	// note need to add to less than:                 --\/, will print one hello.
+	mlib::constexpr_while < 0, [](int t) {t++; return t < 3; }, [&]() {std::cout << "Hello\n"; }, [](int t) {return t + 1; } > ();
 
 	// highest number of recursion.
-	mlib::constexpr_while < 0, [&](int t) {t++; return t < 501; }, [&]() {std::cout << "."; }, [](int t) {return t + 1; } > ();
-	
+	mlib::constexpr_while < 0, [](int t) {t++; return t < 501; }, [&]() {std::cout << "."; }, [](int t) {return t + 1; } > ();
+
 	struct foo { int a; double b; char c; };
 	foo f{42, 3.14, 'c'};
-	char c = std::get<2>(mlib::meta::refl_get<foo>(f));
-	
-	std::cout << mlib::get_nth_element<2>(42, 'c', 3.14, true); // returns 3.14
+	auto x = mlib::meta::refl_get<foo>(f);
+	std::cout << std::get<0>(x);
+
+	std::cout << mlib::get_nth_element<2>(42, 'c', 3.14, true) << "\n"; // returns 3.14
+
+	mlib::value_pack<42, 'c', 3.142, true> v{};
+	std::cout << v[mlib::index_pack<2>{}] << "\n";
+	std::cout << v.begin() << "\n";
+
+	mlib::constexpr_map < mlib::member_map<42, 'c'>{}, mlib::member_map<true, 3.142>{} > map{};
+
+	std::cout << map[mlib::constexpr_parameter<true>{}];
+
+	constexpr auto z = map.lookup<42>();
+	std::cout << z;
 }
 ```
 # Documentation
