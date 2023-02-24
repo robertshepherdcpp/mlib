@@ -64,6 +64,12 @@ namespace mlib {
                     decltype(i), decltype(j)>{a, b, c, d, e,
                     f, g, h, i, j};
             }
+            else if constexpr (number_of_aggregate_members<T> == 11)
+            {
+                auto [a, b, c, d, e, f, g, h, i, j, k] = t;
+                return std::tuple<decltype(a), decltype(b), decltype(c), decltype(d), decltype(e), decltype(f),
+                    decltype(g), decltype(h), decltype(i), decltype(j), decltype(k)>{a, b, c, d, e, f, g, h, i, j, k};
+            }
         }
         template <int index>
         constexpr auto get(auto& obj)
