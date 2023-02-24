@@ -1,8 +1,12 @@
-// Use constexpr while instead.
 #pragma once
+
+#include<utility>
+#include<cstddef>
 
 namespace mlib
 {
+
+    struct with_indexes {};
 
     template<auto... Values>
     struct sequence
@@ -10,6 +14,13 @@ namespace mlib
         constexpr auto operator()()
         {
             (Values(), ...);
+        }
+
+        // requires `indexes` to be the same length as `Values`
+        template<std::size_t... indexes>
+        constexpr auto operator()(std::index_sequence<indexes...>)
+        {
+            (Values(indexes), ...);
         }
     };
 
@@ -48,6 +59,17 @@ namespace mlib
             auto x = []<auto... Is>(sequence<Is...> s_)
             {
                 s_();
+            };
+            x(s);
+        }
+
+        constexpr constexpr_for(auto loop_operation, with_indexes)
+        {
+            auto s = make_sequence<Val, condition, operation, loop_operation>();
+            auto x = []<auto... Is>(sequence<Is...> s_)
+            {
+                constexpr auto x = std::make_index_sequence<sizeof...(Is)>{};
+                s_(x);
             };
             x(s);
         }
