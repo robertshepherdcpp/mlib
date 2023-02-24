@@ -66,5 +66,12 @@ namespace mlib
                 return fixed_string_{ arr };
             }(std::make_index_sequence<I>{});
         }
+
+        template<std::size_t... indexes>
+        constexpr auto select()
+        {
+            char arr[sizeof...(indexes)] = {s.template nth_element<indexes>()...};
+            return fixed_string_{arr};
+        }
     };
 } // namespace mlib
