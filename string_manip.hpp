@@ -15,14 +15,14 @@ namespace mlib
             std::copy_n(arr, i + 1, data);
         }
 
-        constexpr fixed_string(char(&arr)[i + 1])
+        constexpr fixed_string_(char(&arr)[i + 1])
         {
             std::copy_n(arr, i + 1, data);
         }
 
         constexpr auto size() const { return i; }
 
-        auto operator<=>(const fixed_string&) const = default;
+        auto operator<=>(const fixed_string_&) const = default;
 
         template<auto J>
         constexpr auto nth_element() const { return data[J]; }
