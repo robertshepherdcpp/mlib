@@ -159,6 +159,7 @@
     <ClInclude Include="refl_get.hpp" />
     <ClInclude Include="select.hpp" />
     <ClInclude Include="string_manip.hpp" />
+    <ClInclude Include="times.hpp" />
     <ClInclude Include="transform.hpp" />
     <ClInclude Include="tuple.hpp" />
     <ClInclude Include="tuple_inheritance.hpp" />
