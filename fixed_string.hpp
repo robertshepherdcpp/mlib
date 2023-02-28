@@ -13,6 +13,12 @@ namespace mlib
 
         constexpr auto size() const { return i; }
 
+        template<auto I>
+        constexpr auto nth_element()
+        {
+            return data[I];
+        }
+
         auto operator<=>(const fixed_string&) const = default;
 
         char data[i + 1] = {};
