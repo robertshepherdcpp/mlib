@@ -7,8 +7,6 @@
 
 #include"fixed_string.hpp"
 
-// https://www.godbolt.org/z/KcWd9Wfzo
-
 namespace mlib
 {
 
