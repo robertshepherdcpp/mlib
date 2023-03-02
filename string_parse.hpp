@@ -43,5 +43,9 @@ namespace mlib
             constexpr int index = find_index_arr<str, c>();
             return substr<0, index>();
         }
+
+        constexpr auto number_of_characters() {
+            return str.size();
+        }
     };
 } // namespace mlib
