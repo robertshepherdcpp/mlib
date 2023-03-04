@@ -14,7 +14,7 @@ namespace mlib
         constexpr auto size() const { return i; }
 
         template<auto I>
-        constexpr auto nth_element()
+        constexpr auto nth_element() const
         {
             return data[I];
         }
