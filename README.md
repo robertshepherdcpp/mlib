@@ -278,3 +278,22 @@ constexpr auto refl_get(auto& t)
   // implementation
 }
 ```
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+### `mlib::string_parse`
+
+`mlib::string_parse` is a `struct` taking an `mlib::fixed_string`, `str` as a NTTP. It then has member functions:
+    - `mlib::string_parse::substr`
+    - `mlib::string_parse::consume_until`
+This, `mlib::string_parse` is a very basic example of compile-time string parsing. An example of how `mlib::string_parse` looks like is as follows:
+```C++
+template<mlib::fixed_string str>
+struct string_parse
+{
+  template<auto Start, auto End>
+  constexpr auto substr() -> mlib::fixed_string<End - Start>;
+  
+  template<char C>
+  constexpr auto consume_until() -> std::array;
+};
+```
