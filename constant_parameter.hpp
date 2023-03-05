@@ -7,4 +7,10 @@ namespace mlib
 	{
 		using type = decltype(T);
 	};
+
+	template<auto T>
+	struct constexpr_parameter
+	{
+		using type = decltype(T);
+	};
 }
