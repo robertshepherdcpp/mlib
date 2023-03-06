@@ -129,6 +129,9 @@
     <ClInclude Include="string_parse.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="pack_find.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

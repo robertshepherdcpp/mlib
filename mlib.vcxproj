@@ -156,6 +156,7 @@
     <ClInclude Include="operation_stack.hpp" />
     <ClInclude Include="overload.hpp" />
     <ClInclude Include="pack.hpp" />
+    <ClInclude Include="pack_find.hpp" />
     <ClInclude Include="refl_get.hpp" />
     <ClInclude Include="select.hpp" />
     <ClInclude Include="string_manip.hpp" />

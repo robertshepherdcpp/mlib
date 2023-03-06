@@ -15,6 +15,7 @@
 #include "pack.hpp"            // mlib::value_pack
 #include "constexpr_map.hpp"   // mlib::constexpr_map
 #include "count_if.hpp"        // mlib::count_if
+#include "pack_find.hpp"       // mlib::pack_find
 
 int main()
 {
@@ -57,4 +58,7 @@ int main()
 
 	std::tuple tuple_count{ 0, 31.4, 5, 7, 0 };
 	std::cout << mlib::count_if([](auto t) {return t > 0; }, tuple_count);
+
+	std::cout << mlib::pack_find<42, 'c', true, 3, 12, 'b', 42, false, 5, 'y'>();
+	std::cout << mlib::pack_find<'n', 'c', true, 3, 12, 'b', 42, false, 5, 'y'>();
 }
