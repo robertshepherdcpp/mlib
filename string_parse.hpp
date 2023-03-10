@@ -4,9 +4,9 @@
 #include <array>
 #include <cstddef>
 #include <utility>
-#include <iostream>
 #include <type_traits>
 #include <tuple>
+#include <string>
 
 #include "fixed_string.hpp"
 #include "constant_parameter.hpp"
@@ -164,6 +164,7 @@ namespace mlib
             }(std::make_index_sequence<str.size()>{});
         }
 
+        constexpr auto string_view()          const noexcept { return std::string_view{ str.data }; }
         constexpr auto string()               const noexcept { return str; }
         constexpr auto number_of_characters() const noexcept { return str.size(); }
     };
