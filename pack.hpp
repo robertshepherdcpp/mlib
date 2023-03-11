@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <iostream>
 #include <utility>
+#include <tuple>
 
 #include"get_nth_element.hpp"
 
@@ -74,7 +75,8 @@ namespace mlib {
             return mlib::get_nth_element<I>(Ts...);
         }
 
-        constexpr value_pack() { /*Does Nothing!*/
-        }
+        constexpr value_pack() { /*Does Nothing!*/}
+
+        constexpr auto tuple() { return std::tuple{Ts...}; }
     };
 }  // namespace mlib
