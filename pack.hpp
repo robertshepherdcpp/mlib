@@ -6,6 +6,7 @@
 #include <tuple>
 
 #include"get_nth_element.hpp"
+#include"constant_parameter.hpp"
 
 namespace mlib {
 
@@ -30,7 +31,7 @@ namespace mlib {
         constexpr auto end() { return end_value; }
 
         template <auto I>
-        constexpr auto operator[](mlib::index_pack<I>) {
+        constexpr auto operator[](mlib::constexpr_parameter<I>) {
             return mlib::get_nth_element<I>((Ts{})...);
         }
 
@@ -55,7 +56,7 @@ namespace mlib {
         constexpr auto end() { return end_value; };
 
         template <auto I>
-        constexpr auto operator[](index_pack<I>) {
+        constexpr auto operator[](constexpr_parameter<I>) {
             return mlib::get_nth_element<I>(Ts...);
         }
 
