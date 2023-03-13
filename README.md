@@ -158,7 +158,7 @@ namespace mlib
 } // namespace mlib
 ```
 ---------------------------------------------------------------------------------------------------------------------------------
-### `mlib::amount.hpp`
+### `mlib::amount`
 
 `mlib::amount` allows you do do things like you would do in a run time loop but at compile time. You can specify the number of recursions in the `<>` template parameter part. It is a very easy think to use, and can happen at compile time, as long as the callable passed in can run at compile time. Here is an example usage:
 ```C++
