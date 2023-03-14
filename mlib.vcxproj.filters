@@ -135,6 +135,9 @@
     <ClInclude Include="tuple_find.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="for_each_index.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

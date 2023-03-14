@@ -144,6 +144,7 @@
     <ClInclude Include="find.hpp" />
     <ClInclude Include="fixed_string.hpp" />
     <ClInclude Include="for_each.hpp" />
+    <ClInclude Include="for_each_index.hpp" />
     <ClInclude Include="get.hpp" />
     <ClInclude Include="get_nth_element.hpp" />
     <ClInclude Include="index_sequence.hpp" />
