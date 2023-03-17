@@ -8,12 +8,9 @@
 #include <utility>
 
 #include "get_nth_element.hpp"
+#include "constant_parameter.hpp"
 
 namespace mlib {
-
-    template <auto X> struct constexpr_parameter {
-        using type = decltype(X);
-    };
 
     template <auto T> static constexpr auto c_p = constexpr_parameter<T>{};
 

@@ -141,6 +141,9 @@
     <ClInclude Include="sub_tuple.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="sub_pack.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
