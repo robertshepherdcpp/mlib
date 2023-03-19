@@ -84,6 +84,13 @@ And the output would be the following:
 ```
 42, c, t, 1, 3.142,
 ```
+The benchmark for this is as [follows](https://godbolt.org/z/Wq49Yrjo1):
+```
+------------------------------------------------------
+Benchmark            Time             CPU   Iterations
+------------------------------------------------------
+BM_for_each        144 ns         82.6 ns      8173558
+```
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### `mlib::transform`
 `mlib::transform` is a `constexpr` function takes a given tuple, `t` and a given function `f` that transforms one of the elements inside of the tuple. An example invocation of `mlib::transfrom` looks like this:
