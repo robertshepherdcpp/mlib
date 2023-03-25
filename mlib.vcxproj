@@ -158,6 +158,7 @@
     <ClInclude Include="overload.hpp" />
     <ClInclude Include="pack.hpp" />
     <ClInclude Include="pack_find.hpp" />
+    <ClInclude Include="parse_rules.hpp" />
     <ClInclude Include="refl_get.hpp" />
     <ClInclude Include="select.hpp" />
     <ClInclude Include="string_manip.hpp" />
