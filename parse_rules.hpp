@@ -19,5 +19,18 @@ namespace mlib
                 return parse_rules<str>{};
             }
         }
+
+        template<auto c>
+        constexpr auto has_sizeof(auto lambda)
+        {
+            if constexpr (str.size())
+            {
+                return lambda(str);
+            }
+            else
+            {
+                return str;
+            }
+        }
     };
 } // namespace mlib
