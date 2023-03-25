@@ -1,6 +1,6 @@
 # mlib
 
-mlib is a fast, simple c++ meta-programming library that uses c++20.
+mlib is a fast, simple c++ meta-programming library that uses c++20. That also has a tiny bit of reflection!
 
 ### Motivating Example
 
@@ -83,6 +83,13 @@ mlib::for_each(t, [&](auto& a){std::cout << t << ", ";})
 And the output would be the following:
 ```
 42, c, t, 1, 3.142,
+```
+The benchmark for this is as [follows](https://godbolt.org/z/Wq49Yrjo1):
+```
+------------------------------------------------------
+Benchmark            Time             CPU   Iterations
+------------------------------------------------------
+BM_for_each        144 ns         82.6 ns      8173558
 ```
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### `mlib::transform`
