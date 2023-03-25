@@ -167,5 +167,6 @@ namespace mlib
         constexpr auto string_view()          const noexcept { return std::string_view{ str.data }; }
         constexpr auto string()               const noexcept { return str; }
         constexpr auto number_of_characters() const noexcept { return str.size(); }
+        constexpr auto size()                 const noexcept { return str.size(); }
     };
 } // namespace mlib
