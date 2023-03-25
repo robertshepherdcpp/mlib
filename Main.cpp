@@ -16,6 +16,7 @@
 #include "constexpr_map.hpp"   // mlib::constexpr_map
 #include "count_if.hpp"        // mlib::count_if
 #include "pack_find.hpp"       // mlib::pack_find
+#include "parse_rules.hpp"     // mlib::parse_rules
 
 int main()
 {
@@ -59,4 +60,12 @@ int main()
 
 	std::cout << mlib::pack_find<42, 'c', true, 3, 12, 'b', 42, false, 5, 'y'>();
 	std::cout << mlib::pack_find<'n', 'c', true, 3, 12, 'b', 42, false, 5, 'y'>();
+
+	constexpr auto fixed = mlib::fixed_string{ "hello this is me" };
+
+	constexpr auto result_of_branches = 
+    mlib::parse_rules<fixed>{}.if_has_character<'c'>([&](auto x) {return mlib::fixed_string{ "ey i don't want a aije" }; })
+		                      .if_has_character<'a'>([&](auto x) {return mlib::fixed_string{ "I dont wnt n eiy" }; })
+		                      .if_has_character<'t'>([&](auto x) {return mlib::fixed_string{ "I dont think that this will happen\n" }; })
+		                      .if_has_character<' '>([&](auto x) {return mlib::fixed_string{ x.data }; });
 }
