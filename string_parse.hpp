@@ -173,6 +173,15 @@ namespace mlib
             }(std::make_index_sequence<str.size()>{});
         }
 
+        template<auto character, auto from>
+        constexpr auto character_occurences_from() const noexcept
+        {
+            return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
+            {
+                return ((str.data[indexes + from] == character) + ...);
+            }(std::make_index_sequence<str.size() - from>{});
+        }
+
         constexpr auto string_view()          const noexcept { return std::string_view{ str.data }; }
         constexpr auto string()               const noexcept { return str; }
         constexpr auto number_of_characters() const noexcept { return str.size(); }
