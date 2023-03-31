@@ -26,7 +26,7 @@ constexpr auto for_each_pack()
         template<auto T>
         constexpr auto enque(mlib::constexpr_parameter<T>)
         {
-            // we can't enque anything as it has to be known at compile time
+            return operation_stack<operations, T>{};
         }
 
         template<auto type>
