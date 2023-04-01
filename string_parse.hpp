@@ -182,6 +182,13 @@ namespace mlib
             }(std::make_index_sequence<str.size() - from>{});
         }
 
+        template<auto from, auto character>
+        constexpr auto from_up_to() const noexcept
+        {
+            constexpr auto index = f<character>();
+            return substr<from, index>();
+        }
+
         constexpr auto string_view()          const noexcept { return std::string_view{ str.data }; }
         constexpr auto string()               const noexcept { return str; }
         constexpr auto number_of_characters() const noexcept { return str.size(); }
