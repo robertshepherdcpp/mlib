@@ -191,7 +191,7 @@ namespace mlib
         template<auto from, auto character>
         constexpr auto from_up_to() const noexcept
         {
-            constexpr auto index = f<character>();
+            constexpr auto index = find<character>();
             return substr<from, index>();
         }
 
