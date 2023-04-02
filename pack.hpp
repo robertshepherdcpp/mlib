@@ -76,6 +76,12 @@ namespace mlib {
             return mlib::get_nth_element<I>(Ts...);
         }
 
+        template<std::size_t... indexes>
+        constexpr auto select(std::index_sequence<indexes...> i_s)
+        {
+            return value_pack<(mlib::get_nth_element<indexes>(Ts...))...>{};
+        }
+
         constexpr value_pack() { /*Does Nothing!*/}
 
         constexpr auto tuple() { return std::tuple{Ts...}; }
