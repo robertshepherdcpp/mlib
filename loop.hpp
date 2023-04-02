@@ -1,5 +1,8 @@
 #pragma once
 
+#include<utility>
+#include<cstddef>
+
 namespace mlib
 {
     template<auto Num>
@@ -7,11 +10,10 @@ namespace mlib
     {
         constexpr loop(auto lambda)
         {
-            lambda();
-            if constexpr (Num != 1)
+            [&] <std::size_t... indexes>(std::index_sequence<indexes>)
             {
-                loop<Num - 1>{lambda};
-            }
+                (lambda, void(indexes), ...);
+            }(std::make_index_sequence<Num>{});
         }
     };
 } // namespace mlib
