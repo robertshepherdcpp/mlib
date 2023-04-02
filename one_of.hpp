@@ -2,15 +2,9 @@
 
 namespace mlib
 {
-	template<bool b, bool... b>
+	template<bool... c>
 	struct one_of
 	{
-		static constexpr bool value = (b || b...);
-	};
-
-	template<bool b>
-	struct one_of
-	{
-		static constexpr bool value = b;
+		static constexpr bool value = (c ||...);
 	};
 } // namespace mlib
