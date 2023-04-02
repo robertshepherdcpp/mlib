@@ -79,6 +79,12 @@ namespace mlib
             }(std::make_index_sequence<B - A>{});
         }
 
+        template<std::size_t... indexes>
+        constexpr auto take() const noexcept
+        {
+            return std::array{(str.template nth_element<indexes>)..., '\0'};
+        }
+
         template <char c>
         constexpr auto consume_until() const noexcept {
             constexpr int index = find_index_arr<str, c>();
