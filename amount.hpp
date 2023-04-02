@@ -1,5 +1,8 @@
 #pragma once
 
+#include<utility> // std::index_sequence
+#include<cstddef> // std::size_t
+
 namespace mlib
 {
     template<auto T>
@@ -14,11 +17,10 @@ namespace mlib
     template<auto T>
     constexpr auto amount<T>::times(auto&& lambda) const
     {
-        lambda();
-        if constexpr (T - 1 != 0)
+        [] <std::size_t... indexes>(std::index_sequence<indexes...>)
         {
-            amount_t<T - 1>.times(lambda);
-        }
+            (lambda(), void(indexes), ...);
+        }(std::make_index_sequence<T>{});
         return true;
     }
 }; // namespace mlib
