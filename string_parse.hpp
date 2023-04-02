@@ -140,16 +140,26 @@ namespace mlib
             }(std::make_index_sequence<str.size()>{});
         }
 
+        template<auto blur, auto other, auto until, auto index>
+        constexpr auto when_less_than_idx() const noexcept
+        {
+            if constexpr (index < X)
+            {
+                return blur;
+            }
+            else
+            {
+                return other;
+            }
+        }
+
         template<char c, int X>
         constexpr auto blur_until() const noexcept
         {
-            /*
-            constexpr auto first_string = [&]<std::size_t... indexes>(std::index_sequence<indexes...>)
+            return [] <std::size_t... indexes>(std::index_sequence<indexes...>)
             {
-                return std::array{(function_return_index<c, indexes>())..., '\0'};
-            }(std::make_index_sequence<X>{});
-            constexpr auto second_string = substr<X, str.size()>();
-            */
+                return std::array{ (when_less_than_idx<c, s.data[indexes], X, indexes>{})... };
+            }(std::make_index_sequence<str.size()>{});
         }
 
         template<auto lambda>
