@@ -147,6 +147,9 @@
     <ClInclude Include="parse_rules.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="compile_time_while.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
