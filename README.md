@@ -95,10 +95,10 @@ BM_for_each        144 ns         82.6 ns      8173558
 ### `mlib::transform`
 `mlib::transform` is a `constexpr` function takes a given tuple, `t` and a given function `f` that transforms one of the elements inside of the tuple. An example invocation of `mlib::transfrom` looks like this:
 ```C++
-std::tuple<int, char, bool> t{42, 'c', true};
+std::tuple t{1, 4, 7, 'c', true, false};
 mlib::transform(t, [](auto& t){return decltype(t)(static_cast<int>(t));});
 ```
-This invokation, has a tuple t: `std::tuple<int, char, bool>` and then transforms that tuple using the `[](auto& t){return decltype(t)(static_cast<int>(t));};`, and does so accordingly.
+This invokation, has a tuple t: `std::tuple<int, char, bool>` and then transforms that tuple using the `[](auto t) { return (static_cast<int>(t)) + 1; };`, and does so accordingly.
 
 `mlib::transform`'s implementation looks like this:
 ```C++
