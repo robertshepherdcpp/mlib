@@ -102,19 +102,27 @@ This invokation, has a tuple t: `std::tuple<int, char, bool>` and then transform
 
 `mlib::transform`'s implementation looks like this:
 ```C++
-template<typename... Ts, std::size_t... indexes>
-constexpr auto transform_helper(std::tuple<Ts...>& t, auto& lambda, std::index_sequence<indexes...>& i_s)
-{
-    return std::make_tuple(f(std::get<indexes>(t))...);
+template <typename... Ts, std::size_t... indexes>
+constexpr auto transform_helper(std::tuple<Ts...> t, auto lambda,
+                                std::index_sequence<indexes...> i_s) {
+    return std::make_tuple(lambda(std::get<indexes>(t))...);
 }
 
-template<typename T, typename... Ts>
-constexpr auto transform(std::tuple<T, Ts...>& t, auto& lambda)
-{
-    return transform_helper(t, lambda, std::make_index_sequence<sizeof...(Ts) + 1>{});
+template <typename T, typename... Ts>
+constexpr auto transform(std::tuple<T, Ts...> t, auto lambda) {
+    return transform_helper(t, lambda,
+                            std::make_index_sequence<sizeof...(Ts)>{});
 }
 ```
 It is a very simple implementation, and `mlib::transform` is a great tool.
+
+The benchmark is as [follows](https://godbolt.org/z/T73f7GhbP):
+```
+-------------------------------------------------------
+Benchmark             Time             CPU   Iterations
+-------------------------------------------------------
+BM_Transform        307 ns          173 ns      3620400
+```
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 ### `mlib::fixed_string`.
