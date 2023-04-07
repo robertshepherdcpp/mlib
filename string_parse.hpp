@@ -204,7 +204,8 @@ namespace mlib
             constexpr auto index = find<character>();
             return substr<from, index>();
         }
-
+        
+        constexpr auto data()                 const noexcept { return str.data; }
         constexpr auto string_view()          const noexcept { return std::string_view{ str.data }; }
         constexpr auto string()               const noexcept { return str; }
         constexpr auto number_of_characters() const noexcept { return str.size(); }
