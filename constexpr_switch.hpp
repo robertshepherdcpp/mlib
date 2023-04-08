@@ -25,6 +25,6 @@ namespace mlib
     template <auto value, auto... cases> struct constexpr_switch {
         switch_expressions<cases...> m{};
 
-        constexpr auto operator()() { return m(case_<value>{}); }
+        constexpr auto operator()() { m(constexpr_parameter<value>{}); }
     };
 } // namespace mlib
