@@ -156,7 +156,7 @@ namespace mlib
         template<char c, int X>
         constexpr auto blur_until() const noexcept
         {
-            return [] <std::size_t... indexes>(std::index_sequence<indexes...>)
+            return [&] <std::size_t... indexes>(std::index_sequence<indexes...>)
             {
                 return std::array{ (when_less_than_idx<c, str.data[indexes], X, indexes>())... };
             }(std::make_index_sequence<str.size()>{});
