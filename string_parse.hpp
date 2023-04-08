@@ -143,7 +143,7 @@ namespace mlib
         template<auto blur, auto other, auto until, auto index>
         constexpr auto when_less_than_idx() const noexcept
         {
-            if constexpr (index < X)
+            if constexpr (index < until)
             {
                 return blur;
             }
