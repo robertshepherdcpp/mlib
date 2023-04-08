@@ -2,21 +2,22 @@
 #include<iostream> // std::cout
 #include<utility>  // std::make_index_sequence
 
-#include "for_each.hpp"       // mlib::for_each
-#include "tuple.hpp"          // mlib::tuple
-#include "transform.hpp"      // mlib::transform
-#include "select.hpp"         // mlib::select
-#include "find.hpp"           // mlib::find
-#include "tuple_reverse.hpp"  // mlib::tuple_reverse
-#include "constexpr_for.hpp"  // mlib::constexpr_for
-#include "constexpr_while.hpp"// mlib::constexpr_while
-#include "refl_get.hpp"       // mlib::refl_get
+#include "for_each.hpp"        // mlib::for_each
+#include "tuple.hpp"           // mlib::tuple
+#include "transform.hpp"       // mlib::transform
+#include "select.hpp"          // mlib::select
+#include "find.hpp"            // mlib::find
+#include "tuple_reverse.hpp"   // mlib::tuple_reverse
+#include "constexpr_for.hpp"   // mlib::constexpr_for
+#include "constexpr_while.hpp" // mlib::constexpr_while
+#include "refl_get.hpp"        // mlib::refl_get
 #include "get_nth_element.hpp" // mlib::get_nth_element
 #include "pack.hpp"            // mlib::value_pack
 #include "constexpr_map.hpp"   // mlib::constexpr_map
 #include "count_if.hpp"        // mlib::count_if
 #include "pack_find.hpp"       // mlib::pack_find
 #include "parse_rules.hpp"     // mlib::parse_rules
+#include "constexpr_switch.hpp"// mlib::constexpr_switch
 
 int main()
 {
@@ -68,4 +69,10 @@ int main()
 		                      .if_has_character<'a'>([&](auto x) {return mlib::fixed_string{ "I dont wnt n eiy" }; })
 		                      .if_has_character<'t'>([&](auto x) {return mlib::fixed_string{ "I dont think that this will happen\n" }; })
 		                      .if_has_character<' '>([&](auto x) {return mlib::fixed_string{ x.data }; });
+	mlib::constexpr_switch <
+		5, [](mlib::constexpr_parameter<0>) { std::cout << "it is 0\n"; },
+		   [](mlib::constexpr_parameter<5>) { std::cout << "it is not 0\n"; },
+		   [](auto) { std::cout << "I don't know what it is!\n"; } >
+		value{};
+	value();
 }
