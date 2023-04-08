@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-
 namespace mlib
 {
     template <auto T> struct constexpr_parameter {
