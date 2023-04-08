@@ -12,10 +12,6 @@ namespace mlib
         using type = decltype(T);
     };
 
-    template <typename... Ts> struct overload : Ts... {
-        using Ts::operator()...;
-    };
-
     template <auto callable> struct switcher {
         constexpr auto operator()(constexpr_parameter<callable>) {
             return callable();
