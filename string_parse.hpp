@@ -158,7 +158,7 @@ namespace mlib
         {
             return [] <std::size_t... indexes>(std::index_sequence<indexes...>)
             {
-                return std::array{ (when_less_than_idx<c, s.data[indexes], X, indexes>{})... };
+                return std::array{ (when_less_than_idx<c, str.data[indexes], X, indexes>())... };
             }(std::make_index_sequence<str.size()>{});
         }
 
