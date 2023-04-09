@@ -6,15 +6,6 @@ namespace mlib
         using type = decltype(T);
     };
 
-    template <auto T> struct case_ {
-        using type = decltype(T);
-    };
-
-    template <auto callable> struct switcher {
-        constexpr auto operator()(constexpr_parameter<callable>) {
-            return callable();
-        }
-    };
 
     template <auto... members>
     struct switch_expressions : constexpr_parameter<members>::type... {
