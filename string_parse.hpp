@@ -65,7 +65,7 @@ namespace mlib
     };
 
     template<typename T, std::size_t I>
-    constexpr auto array_to_fixed_string(std::array<T, I>& arr)
+    constexpr auto array_to_fixed_string(std::array<T, I> arr)
     {
         return fixed_string<I>{arr.data()};
     }
