@@ -6,7 +6,6 @@ namespace mlib
         using type = decltype(T);
     };
 
-
     template <auto... members>
     struct switch_expressions : constexpr_parameter<members>::type... {
         using decltype(members)::operator()...;
