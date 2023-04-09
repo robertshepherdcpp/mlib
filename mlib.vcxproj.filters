@@ -150,6 +150,9 @@
     <ClInclude Include="compile_time_while.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="constexpr_type_switch.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
