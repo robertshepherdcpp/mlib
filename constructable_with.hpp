@@ -29,5 +29,5 @@ namespace mlib
     constexpr auto number_of_aggregate_members =
         []<std::size_t... indexes>(std::index_sequence<indexes...> i_s) {
         return ((aggregate_of<T, indexes> *indexes) + ... + 0);
-    }(std::make_index_sequence<64>{});
+    }(std::make_index_sequence<12>{});
 } // namespace mlib
