@@ -4,7 +4,6 @@
 
 namespace mlib
 {
-
     template <auto... members>
     struct switch_expressions : constexpr_parameter<members>::type... {
         using decltype(members)::operator()...;
