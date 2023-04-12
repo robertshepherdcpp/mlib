@@ -1,10 +1,9 @@
 #pragma once
 
+#include"constant_parameter.hpp"
+
 namespace mlib
 {
-    template <auto T> struct constexpr_parameter {
-        using type = decltype(T);
-    };
 
     template <auto... members>
     struct switch_expressions : constexpr_parameter<members>::type... {
