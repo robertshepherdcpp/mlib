@@ -75,14 +75,16 @@ namespace mlib
         template <auto A, auto B>
         constexpr auto substr() const noexcept {
             return[&]<std::size_t... indexes>(std::index_sequence<indexes...>) {
-                return std::array{ (str.template nth_element<A + indexes>())..., '\0' };
+                constexpr char result[] = { (str.template nth_element<A + indexes>())..., '\0' };
+                return fixed_string{ result };
             }(std::make_index_sequence<B - A>{});
         }
 
         template<std::size_t... indexes>
         constexpr auto take() const noexcept
         {
-            return std::array{(str.template nth_element<indexes>)..., '\0'};
+            constexpr char result[] = { (str.template nth_element<indexes>())..., '\0' };
+            return fixed_string{ result };
         }
 
         template <char c>
@@ -105,6 +107,12 @@ namespace mlib
         }
 
         template<char c, auto lamda>
+        constexpr auto if_string_has_change() const noexcept
+        {
+            return change_with<c, lambda>();
+        }
+
+        template<char c, auto lamda>
         constexpr auto if_string_has() const noexcept
         {
             if constexpr (occurences<[](auto x){x == c;}>() > 0)
@@ -118,7 +126,8 @@ namespace mlib
         {
             return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
             {
-                return std::array{ (function_return_index<c, indexes>())..., '\0' };
+                const char result[] = { (function_return_index<c, indexes>())..., '\0' };
+                return fixed_string{ result };
             }(std::make_index_sequence<str.size()>{});
         }
 
@@ -127,7 +136,8 @@ namespace mlib
         {
             return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
             {
-                return std::array{ (lambda(str.template nth_element<indexes>()))..., '\0' };
+                constexpr char result[] = { (lambda(str.template nth_element<indexes>()))..., '\0' };
+                return fixed_string{ result };
             }(std::make_index_sequence<str.size()>{});
         }
 
@@ -158,7 +168,8 @@ namespace mlib
         {
             return [&] <std::size_t... indexes>(std::index_sequence<indexes...>)
             {
-                return std::array{ (when_less_than_idx<c, str.data[indexes], X, indexes>())... };
+                const char result[] = { (when_less_than_idx<c, str.data_[indexes], X, indexes>())..., '\0' };
+                return fixed_string{ result };
             }(std::make_index_sequence<str.size()>{});
         }
 
@@ -167,7 +178,8 @@ namespace mlib
         {
             return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
             {
-                return std::array{ if_is<!lambda(str.template nth_element<indexes>()), str.template nth_element<indexes>(), ' '>{}()..., '\0' };
+                constexpr char array[] = { if_is<!lambda(str.template nth_element<indexes>()), str.template nth_element<indexes>(), ' '>{}()..., '\0' };
+                return fixed_string{ array };
             }(std::make_index_sequence<str.size()>{});
         }
 
@@ -176,7 +188,8 @@ namespace mlib
         {
             return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
             {
-                return std::array{ if_is<!lambda(str.template nth_element<indexes>()), str.template nth_element<indexes>(), c>{}()..., '\0' };
+                constexpr char array[] = { if_is<!lambda(str.template nth_element<indexes>()), str.template nth_element<indexes>(), c>{}()..., '\0' };
+                return fixed_string{ array };
             }(std::make_index_sequence<str.size()>{});
         }
 
@@ -219,3 +232,4 @@ namespace mlib
         constexpr auto size()                 const noexcept { return str.size(); }
     };
 } // namespace mlib
+// https://godbolt.org/z/ejMTW4aaE
