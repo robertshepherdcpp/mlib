@@ -107,7 +107,7 @@ namespace mlib
         template<char c, auto lamda>
         constexpr auto if_string_has() const noexcept
         {
-            if constexpr (find<c>() != -1)
+            if constexpr (occurences<[](auto x){x == c;}>() > 0)
             {
                 return change_with<lamda>();
             }
