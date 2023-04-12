@@ -62,7 +62,7 @@ namespace mlib
         {
             return[]<std::size_t... indexes>(std::index_sequence<indexes...>) {
                 char arr[I + 1] = { s.template nth_element<indexes>()... };
-                arr[I + 1] = 0;
+                arr[I] = 0;
                 return fixed_string_{ arr };
             }(std::make_index_sequence<I>{});
         }
