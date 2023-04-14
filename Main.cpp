@@ -18,6 +18,7 @@
 #include "pack_find.hpp"       // mlib::pack_find
 #include "parse_rules.hpp"     // mlib::parse_rules
 #include "constexpr_switch.hpp"// mlib::constexpr_switch
+#include "constexpr_range.hpp" // mlib::constexpr_range
 
 int main()
 {
@@ -75,4 +76,14 @@ int main()
 		   [](auto) { std::cout << "I don't know what it is!\n"; } >
 		value{};
 	value();
+
+	constexpr auto value_index = mlib::constexpr_range<1, 2, 3, 4, 5, 6>{}
+		.add<5>()
+		.pop_front()
+		.map < [](auto x) {return x + 1; } > ()
+		.map_with_location < [](auto x, auto idx) {return x + idx; } > ()
+		.join_with<0, 1, 2, 3, 4>()
+		.add(mlib::Size{})
+		.remove<0>()
+		.at<10>();
 }
