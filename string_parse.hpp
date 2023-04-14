@@ -106,7 +106,7 @@ namespace mlib
             return Char;
         }
 
-        template<char c, auto lamda>
+        template<char c, auto lambda>
         constexpr auto if_string_has_change() const noexcept
         {
             return change_with<c, lambda>();
