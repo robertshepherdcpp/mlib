@@ -230,6 +230,7 @@ namespace mlib
         constexpr auto string()               const noexcept { return str; }
         constexpr auto number_of_characters() const noexcept { return str.size(); }
         constexpr auto size()                 const noexcept { return str.size(); }
+        constexpr auto stdstring()            const noexcept { return std::string{ str.data }; }
     };
 } // namespace mlib
 // https://godbolt.org/z/ejMTW4aaE
