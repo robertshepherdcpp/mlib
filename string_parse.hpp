@@ -224,6 +224,15 @@ namespace mlib
             constexpr auto index = find<from>();
             return substr<index, size()>();
         }
+
+        template<auto X>
+        constexpr auto indexes_that_are() const noexcept
+        {
+            return[]<std::size_t... indexes>(std::index_sequence<indexes...>)
+            {
+                return std::array{ (if_is<(str.template nth_element<indexes>() == X), true, false>{}())...};
+            }(std::make_index_sequence<str.size()>{});
+        }
         
         constexpr auto data()                 const noexcept { return str.data; }
         constexpr auto string_view()          const noexcept { return std::string_view{ str.data }; }
