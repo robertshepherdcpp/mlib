@@ -297,6 +297,6 @@ struct string_parse
   constexpr auto substr() -> mlib::fixed_string<End - Start>;
   
   template<char C>
-  constexpr auto consume_until() -> std::array;
+  constexpr auto consume_until() -> mlib::fixed_string;
 };
 ```
