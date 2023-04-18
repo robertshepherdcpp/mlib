@@ -70,6 +70,20 @@ namespace mlib
         return fixed_string<I>{arr.data()};
     }
 
+
+    template<auto blur, auto other, auto until, auto index>
+    constexpr auto when_less_than_idx() const noexcept
+    {
+        if constexpr (index < until)
+        {
+            return blur;
+        }
+        else
+        {
+            return other;
+        }
+    }
+
     template <fixed_string str>
     struct string_parse {
         template <auto A, auto B>
@@ -148,19 +162,6 @@ namespace mlib
             {
                 return (lambda.template operator() < str.template nth_element<indexes>() > () + ...);
             }(std::make_index_sequence<str.size()>{});
-        }
-
-        template<auto blur, auto other, auto until, auto index>
-        constexpr auto when_less_than_idx() const noexcept
-        {
-            if constexpr (index < until)
-            {
-                return blur;
-            }
-            else
-            {
-                return other;
-            }
         }
 
         template<char c, int X>
