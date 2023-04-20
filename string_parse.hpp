@@ -234,6 +234,16 @@ namespace mlib
                 return std::array{ (if_is<(str.template nth_element<indexes>() == X), true, false>{}())...};
             }(std::make_index_sequence<str.size()>{});
         }
+
+        template<auto value, auto... values>
+        constexpr auto values_that_are_change() const noexcept
+        {
+            return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
+            {
+                constexpr char arr[] = { if_is<logic_or<str.template nth_element<indexes>(), values...>(), value, str.template nth_element<indexes>()>{}()..., '\n' };
+                return fixed_string{ arr };
+            }(std::make_index_sequence<str.size() + 1>{});
+        }
         
         constexpr auto data()                 const noexcept { return str.data; }
         constexpr auto string_view()          const noexcept { return std::string_view{ str.data }; }
@@ -243,4 +253,4 @@ namespace mlib
         constexpr auto stdstring()            const noexcept { return std::string{ str.data }; }
     };
 } // namespace mlib
-// https://godbolt.org/z/ejMTW4aaE
+// https://godbolt.org/z/zTEG4G99x
