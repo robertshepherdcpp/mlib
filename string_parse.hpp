@@ -238,16 +238,6 @@ namespace mlib
             }(std::make_index_sequence<str.size()>{});
         }
 
-        template<auto value, auto... values>
-        constexpr auto values_that_are_change() const noexcept
-        {
-            return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
-            {
-                constexpr char arr[] = { if_is<logic_or<str.template nth_element<indexes>(), values...>(), value, str.template nth_element<indexes>()>{}()..., '\n' };
-                return fixed_string{ arr };
-            }(std::make_index_sequence<str.size() + 1>{});
-        }
-
         constexpr auto to_container()
         {
             return [] <std::size_t... indexes>(std::index_sequence<indexes...>)
