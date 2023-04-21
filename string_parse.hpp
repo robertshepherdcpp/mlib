@@ -234,8 +234,8 @@ namespace mlib
         {
             return[]<std::size_t... indexes>(std::index_sequence<indexes...>)
             {
-                return std::array{ (if_is<(str.template nth_element<indexes>() == X), true, false>{}())...};
-            }(std::make_index_sequence<str.size()>{});
+                return std::array{ (if_is<(str.template nth_element<indexes>() == X), true, false>{}())..., '\n'};
+            }(std::make_index_sequence<str.size() - 1>{});
         }
 
         constexpr auto to_container()
