@@ -84,6 +84,9 @@ namespace mlib
         }
     }
 
+    template<auto... Ts>
+    struct container;
+
     template <fixed_string str>
     struct string_parse {
         template <auto A, auto B>
@@ -244,6 +247,14 @@ namespace mlib
                 return fixed_string{ arr };
             }(std::make_index_sequence<str.size() + 1>{});
         }
+
+        constexpr auto to_container()
+        {
+            return [] <std::size_t... indexes>(std::index_sequence<indexes...>)
+            {
+                return container<(str.template nth_element<indexes>())...>{};
+            }(std::make_index_sequence<str.size()>{});
+        }
         
         constexpr auto data()                 const noexcept { return str.data; }
         constexpr auto string_view()          const noexcept { return std::string_view{ str.data }; }
@@ -253,4 +264,4 @@ namespace mlib
         constexpr auto stdstring()            const noexcept { return std::string{ str.data }; }
     };
 } // namespace mlib
-// https://godbolt.org/z/zTEG4G99x
+// https://godbolt.org/z/qeaM4xWdj
