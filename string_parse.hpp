@@ -229,12 +229,12 @@ namespace mlib
             return substr<index, size()>();
         }
 
-        template<auto X>
-        constexpr auto indexes_that_are() const noexcept
+        template<auto A, auto B>
+        constexpr auto alternate_blur() const noexcept
         {
             return[]<std::size_t... indexes>(std::index_sequence<indexes...>)
             {
-                return std::array{ (if_is<((indexes % 2) == 0), true, false>{}())..., '\n'};
+                return std::array{ (if_is<((indexes % 2) == 0), A, B>{}())..., '\n'};
             }(std::make_index_sequence<str.size() - 1>{});
         }
 
