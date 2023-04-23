@@ -19,6 +19,7 @@
 #include "parse_rules.hpp"     // mlib::parse_rules
 #include "constexpr_switch.hpp"// mlib::constexpr_switch
 #include "constexpr_range.hpp" // mlib::constexpr_range
+#include "string_parse.hpp"    // mlib::string_parse
 
 int main()
 {
@@ -86,4 +87,8 @@ int main()
 		.add(mlib::Size{})
 		.remove<0>()
 		.at<10>();
+
+	constexpr auto parser = mlib::string_parse<fixed>{};
+
+	std::cout << parser.template alternate_blur<'-', '+'>().data();
 }
