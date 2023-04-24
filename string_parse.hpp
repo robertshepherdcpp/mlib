@@ -232,9 +232,10 @@ namespace mlib
         template<auto A, auto B>
         constexpr auto alternate_blur() const noexcept
         {
-            return[]<std::size_t... indexes>(std::index_sequence<indexes...>)
+            return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
             {
-                return std::array{ (if_is<((indexes % 2) == 0), A, B>{}())..., '\n'};
+                constexpr char arr[] = {(if_is<((indexes % 2) == 0), A, B>{}())..., '\n'};
+                return fixed_string{arr};
             }(std::make_index_sequence<str.size() - 1>{});
         }
 

@@ -90,5 +90,5 @@ int main()
 
 	constexpr auto parser = mlib::string_parse<fixed>{};
 
-	std::cout << parser.template alternate_blur<'-', '+'>().data();
+	std::cout << parser.template alternate_blur<'-', '+'>().data;
 }
