@@ -85,7 +85,7 @@ int main()
 		.map_with_location < [](auto x, auto idx) {return x + idx; } > ()
 		.join_with<0, 1, 2, 3, 4>()
 		.add(mlib::Size{})
-		.remove<0>()
+		.remove_at<0>()
 		.at<10>();
 
 	constexpr auto parser = mlib::string_parse<fixed>{};

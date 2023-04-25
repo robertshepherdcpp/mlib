@@ -115,7 +115,7 @@ namespace mlib
         }
 
         template<auto index>
-        constexpr auto remove()
+        constexpr auto remove_at()
         {
             constexpr auto first_part = [&]<std::size_t... indexes>(std::index_sequence<indexes...>)
             {
