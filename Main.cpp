@@ -67,13 +67,14 @@ int main()
 	constexpr auto fixed = mlib::fixed_string{ "hello this is me" };
 
 	constexpr auto result_of_branches = 
-    mlib::parse_rules<fixed>{}.if_has_character<'c'>([&](auto x) {return mlib::fixed_string{ "ey i don't want a aije" }; })
+    mlib::parse_rules<fixed>{}.if_has_character<'h'>([&](auto x) {return mlib::fixed_string{ "ey i don't want a aije" }; })
 		                      .if_has_character<'a'>([&](auto x) {return mlib::fixed_string{ "I dont wnt n eiy" }; })
 		                      .if_has_character<'t'>([&](auto x) {return mlib::fixed_string{ "I dont think that this will happen\n" }; })
 		                      .if_has_character<' '>([&](auto x) {return mlib::fixed_string{ x.data }; });
 	mlib::constexpr_switch <
 		5, [](mlib::constexpr_parameter<0>) { std::cout << "it is 0\n"; },
 		   [](mlib::constexpr_parameter<5>) { std::cout << "it is not 0\n"; },
+		   [](mlib::constexpr_parameter<'c'>) { std::cout << "it is 'c'\n";  },
 		   [](auto) { std::cout << "I don't know what it is!\n"; } >
 		value{};
 	value();
