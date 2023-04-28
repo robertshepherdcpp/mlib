@@ -64,6 +64,8 @@ int main()
 	std::cout << mlib::pack_find<42, 'c', true, 3, 12, 'b', 42, false, 5, 'y'>();
 	std::cout << mlib::pack_find<'n', 'c', true, 3, 12, 'b', 42, false, 5, 'y'>();
 
+	std::cout << "\n";
+
 	constexpr auto fixed = mlib::fixed_string{ "hello this is me" };
 
 	constexpr auto result_of_branches = 
