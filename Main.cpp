@@ -25,7 +25,7 @@ int main()
 {
 	// mlib::for_each
 	std::tuple<int, char, bool, double> t{ 42, 'c', true, 3.142 };
-	mlib::for_each(t, [](auto& t) { std::cout << "val: " << t << "\n"; });
+	mlib::for_each(t, [](auto t) { std::cout << "val: " << t << "\n"; });
 
 	// mlib::transform
 	std::tuple<int, char, double> t2{ 42, 'c', 3.142 };
