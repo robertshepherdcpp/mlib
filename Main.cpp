@@ -81,7 +81,7 @@ int main()
 		value{};
 	value();
 
-	constexpr auto value_index = mlib::constexpr_range<1, 2, 3, 4, 5, 6>{}
+	constexpr auto value_index = mlib::constexpr_range<1, 2, 3, 4, 5, 6, 8>{}
 		.add<5>()
 		.pop_front()
 		.map < [](auto x) {return x + 1; } > ()
