@@ -74,7 +74,7 @@ int main()
 		                      .if_has_character<'t'>([&](auto x) {return mlib::fixed_string{ "I dont think that this will happen\n" }; })
 		                      .if_has_character<' '>([&](auto x) {return mlib::fixed_string{ x.data }; });
 	mlib::constexpr_switch <
-		5, [](mlib::constexpr_parameter<0>) { std::cout << "it is 0\n"; },
+		0 , [](mlib::constexpr_parameter<0>) { std::cout << "it is 0\n"; },
 		   [](mlib::constexpr_parameter<5>) { std::cout << "it is not 0\n"; },
 		   [](mlib::constexpr_parameter<'c'>) { std::cout << "it is 'c'\n";  },
 		   [](auto) { std::cout << "I don't know what it is!\n"; } >
