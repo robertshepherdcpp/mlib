@@ -135,5 +135,14 @@ namespace mlib
         {
             return get_nth_element<index>(vals...);
         }
+
+        template<auto T>
+        constexpr auto instances()
+        {
+            return[=]<std::size_t... indexes>(std::index_sequence<indexes...>)
+            {
+                return ((T == mlib::get_nth_element<indexes>(vals)) + ...);
+            }(std::make_index_sequence<sizeof...(vals)>{});
+        }
     };
 } // namespace mlib
