@@ -97,13 +97,13 @@ namespace mlib
         }
 
         template<auto... values_>
-        constexpr auto operator+(constexpr_range<values_...> s) const
+        constexpr auto operator+(constexpr_range<values_...>) const
         {
             return constexpr_range<vals..., values_...>{};
         }
 
         template<auto... values_>
-        constexpr auto join_with(constexpr_range<values_...> s)
+        constexpr auto join_with(constexpr_range<values_...>)
         {
             return constexpr_range<vals..., values_...>{};
         }
@@ -137,7 +137,7 @@ namespace mlib
         }
 
         template<auto T>
-        constexpr auto instances()
+        constexpr auto instances() const noexcept -> int
         {
             return[=]<std::size_t... indexes>(std::index_sequence<indexes...>)
             {

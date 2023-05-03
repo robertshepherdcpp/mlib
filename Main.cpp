@@ -90,7 +90,7 @@ int main()
 		.add(mlib::Size{})
 		.remove_at<0>()
 		.add<4>()
-		.at<10>();
+		.at<4>();
 
 	constexpr auto parser = mlib::string_parse<fixed>{};
 
