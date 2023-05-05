@@ -3,10 +3,17 @@
 #include<utility>
 #include<cstddef>
 
-#include"get_nth_element.hpp"
-
 namespace mlib
 {
+    template<auto A, auto...B>
+    struct first
+    {
+        constexpr auto operator()()
+        {
+            return A;
+        }
+    };
+
     template<auto Index, auto value, auto value_two>
     struct value_is_value
     {
@@ -32,7 +39,7 @@ namespace mlib
         {
             return (value_is_value<indexes, pack, value_to_find>{}() + ...);
         }(std::make_index_sequence<sizeof...(pack)>{});
-        if constexpr (x == 0 && mlib::get_nth_element<0>(pack...) != value_to_find)
+        if constexpr ((x == 0) && mlib::first<pack...>{}() == value_to_find)
         {
             return -1;
         }
