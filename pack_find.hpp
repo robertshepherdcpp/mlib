@@ -39,7 +39,7 @@ namespace mlib
         {
             return (value_is_value<indexes, pack, value_to_find>{}() + ...);
         }(std::make_index_sequence<sizeof...(pack)>{});
-        if constexpr ((x == 0) && mlib::first<pack...>{}() == value_to_find)
+        if constexpr ((x == 0) && mlib::first<pack...>{}() != value_to_find)
         {
             return -1;
         }
