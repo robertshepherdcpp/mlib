@@ -11,7 +11,7 @@
 namespace mlib
 {
 	template<auto to_add, auto to_find, typename T, typename... Ts, std::size_t index, std::size_t... indexes>
-	constexpr auto find_helper(tuple<T, Ts...> tup, std::index_sequence<index, indexes...>)
+	constexpr auto find_helper(mlib::tuple<T, Ts...> tup, std::index_sequence<index, indexes...>)
 	{
 		if constexpr (get<index + to_add>(tup) == to_find)
 		{
@@ -24,7 +24,7 @@ namespace mlib
 	}
 
 	template<auto to_add, auto to_find, typename T, std::size_t index>
-	constexpr auto find_helper(tuple<T> tup, std::index_sequence<index>)
+	constexpr auto find_helper(mlib::tuple<T> tup, std::index_sequence<index>)
 	{
 		if constexpr (get<index + to_add>(tup) == to_find)
 		{
@@ -37,7 +37,7 @@ namespace mlib
 	}
 
 	template<auto to_find, typename T, typename... Ts, std::size_t index, std::size_t... indexes>
-	constexpr auto find_helper(tuple<T, Ts...> tup, std::index_sequence<index, indexes...>)
+	constexpr auto find_helper(mlib::tuple<T, Ts...> tup, std::index_sequence<index, indexes...>)
 	{
 		if constexpr (mlib::get<index>(tup) == to_find)
 		{
