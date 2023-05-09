@@ -1,6 +1,6 @@
 # mlib
 
-*mlib* is a fast, simple c++ meta-programming library that uses c++20. That also has a tiny bit of reflection!
+*mlib* is a fast, simple c++ metaprogramming library that uses c++20. That also has a tiny bit of reflection!
 
 ### Motivating Example
 
