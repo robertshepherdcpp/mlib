@@ -2,24 +2,25 @@
 #include<iostream> // std::cout
 #include<utility>  // std::make_index_sequence
 
-#include "for_each.hpp"        // mlib::for_each
-#include "tuple.hpp"           // mlib::tuple
-#include "transform.hpp"       // mlib::transform
-#include "select.hpp"          // mlib::select
-#include "find.hpp"            // mlib::find
-#include "tuple_reverse.hpp"   // mlib::tuple_reverse
-#include "constexpr_for.hpp"   // mlib::constexpr_for
-#include "constexpr_while.hpp" // mlib::constexpr_while
-#include "refl_get.hpp"        // mlib::refl_get
-#include "get_nth_element.hpp" // mlib::get_nth_element
-#include "pack.hpp"            // mlib::value_pack
-#include "constexpr_map.hpp"   // mlib::constexpr_map
-#include "count_if.hpp"        // mlib::count_if
-#include "pack_find.hpp"       // mlib::pack_find
-#include "parse_rules.hpp"     // mlib::parse_rules
-#include "constexpr_switch.hpp"// mlib::constexpr_switch
-#include "constexpr_range.hpp" // mlib::constexpr_range
-#include "string_parse.hpp"    // mlib::string_parse
+#include "for_each.hpp"           // mlib::for_each
+#include "tuple.hpp"              // mlib::tuple
+#include "transform.hpp"          // mlib::transform
+#include "select.hpp"             // mlib::select
+#include "find.hpp"               // mlib::find
+#include "tuple_reverse.hpp"      // mlib::tuple_reverse
+#include "constexpr_for.hpp"      // mlib::constexpr_for
+#include "constexpr_while.hpp"    // mlib::constexpr_while
+#include "refl_get.hpp"           // mlib::refl_get
+#include "get_nth_element.hpp"    // mlib::get_nth_element
+#include "pack.hpp"               // mlib::value_pack
+#include "constexpr_map.hpp"      // mlib::constexpr_map
+#include "count_if.hpp"           // mlib::count_if
+#include "pack_find.hpp"          // mlib::pack_find
+#include "parse_rules.hpp"        // mlib::parse_rules
+#include "constexpr_switch.hpp"   // mlib::constexpr_switch
+#include "constexpr_range.hpp"    // mlib::constexpr_range
+#include "string_parse.hpp"       // mlib::string_parse
+#include "compile_time_while.hpp" // mlib::compile_time_while
 
 int main()
 {
@@ -40,7 +41,11 @@ int main()
 	mlib::constexpr_while < 0, [](int t) {t++; return t < 3; }, [&]() {std::cout << "Hello\n"; }, [](int t) {return t + 1; } > ();
 
 	// highest number of recursion.
-	mlib::constexpr_while < 0, [](int t) {t++; return t < 501; }, [&]() {std::cout << "."; }, [](int t) {return t + 1; } > ();
+	mlib::constexpr_while < 0, [](int t) {t++; return t < 501; }, []() {std::cout << "."; }, [](int t) {return t + 1; } > ();
+
+	std::cout << "\n\n\n";
+
+	mlib::compile_time_while < 0, [](int t) {return t < 5; }, [](int t) {return t + 1; }, []() {std::cout << "."; } > ();
 
 	struct foo { int a; double b; char c; };
 	foo f{42, 3.14, 'c'};

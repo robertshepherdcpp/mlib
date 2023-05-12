@@ -33,28 +33,10 @@ namespace mlib
 		}
 	};
 
-	template<auto iterations, auto lambda>
-	constexpr auto make_tuple_sequence()
-	{
-		return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
-		{
-			return std::tuple{ (any_first<lambda, indexes>{}())... };
-		}(std::make_index_sequence<iterations>{});
-	}
-
-	template<typename... Ts>
-	constexpr auto for_each_lambda(std::tuple<Ts...> tup)
-	{
-		[&] <std::size_t... indexes>(std::index_sequence<indexes...>)
-		{
-			(std::get<indexes>(tup)(), ...);
-		}(std::make_index_sequence<sizeof...(Ts)>{});
-	}
-
-	template<auto start_value, auto condition_for_val, auto operation_on_val>
+	template<auto start_value, auto condition_for_val, auto operation_on_val, auto operation_to_do>
 	struct compile_time_while
 	{
-		constexpr auto operator()(auto operation_to_do)
+		constexpr auto operator()()
 		{
 			// first of all, make a value that is how many times the operations are true.
 			constexpr auto amount_of_iterations = pack<start_value, condition_for_val, operation_on_val>{}();
@@ -63,6 +45,24 @@ namespace mlib
 			constexpr auto tuple_sequence = make_tuple_sequence<amount_of_iterations, operation_to_do>();
 			// now do for_each
 			for_each_lambda(tuple_sequence);
+		}
+
+		template<auto iterations, auto lambda>
+		constexpr auto make_tuple_sequence()
+		{
+			return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
+			{
+				return std::tuple{ (any_first<lambda, indexes>{}())... };
+			}(std::make_index_sequence<iterations>{});
+		}
+
+		template<typename... Ts>
+		constexpr auto for_each_lambda(std::tuple<Ts...> tup)
+		{
+			[&] <std::size_t... indexes>(std::index_sequence<indexes...>)
+			{
+				(std::get<indexes>(tup)(), ...);
+			}(std::make_index_sequence<sizeof...(Ts)>{});
 		}
 	};
 } // namespace mlib
