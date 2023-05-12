@@ -1,6 +1,6 @@
 # mlib
 
-*mlib* is a fast, simple c++ meta-programming library that uses c++20. That also has a tiny bit of reflection!
+*mlib* is a fast, simple c++ metaprogramming library that uses c++20. That also has a tiny bit of reflection!
 
 ### Motivating Example
 
@@ -331,5 +331,8 @@ struct string_parse
   
   template<char C>
   constexpr auto consume_until() -> mlib::fixed_string;
+  
+  template<char C>
+  constexpr auto blur_with() const noexcept;
 };
 ```
