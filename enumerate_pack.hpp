@@ -6,7 +6,8 @@
 namespace mlib
 {
     // a replacement for mlib::for_each rather than making a tuple with a pack.
-    constexpr auto enumerate_pack(auto callable, auto... pack)
+    template<auto callable, auto... pack>
+    constexpr auto enumerate_pack()
     {
         [&] <std::size_t... indexes>(std::index_sequence<indexes...>)
         {

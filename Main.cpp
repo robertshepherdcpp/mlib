@@ -21,6 +21,7 @@
 #include "constexpr_range.hpp"    // mlib::constexpr_range
 #include "string_parse.hpp"       // mlib::string_parse
 #include "compile_time_while.hpp" // mlib::compile_time_while
+#include "enumerate_pack.hpp"     // mlib::enumerate_pack
 
 int main()
 {
@@ -100,4 +101,6 @@ int main()
 	constexpr auto parser = mlib::string_parse<fixed>{};
 
 	std::cout << parser.template alternate_blur<'-', '+'>().data;
+
+	mlib::enumerate_pack < [](auto index, auto value) {std::cout << index << ": " << value; }, 4, 'c', true, false, 54, 'y', 3.14 > ();
 }
