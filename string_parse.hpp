@@ -239,6 +239,14 @@ namespace mlib
             }(std::make_index_sequence<str.size() - 1>{});
         }
 
+        constexpr auto non_recuring() const noexcept
+        {
+            return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
+            {
+                return ((character_occurences<str.template nth_element<indexes>()>() < 2) + ...);
+            }(std::make_index_sequence<str.size()>{});
+        }
+
         constexpr auto to_container()
         {
             return [] <std::size_t... indexes>(std::index_sequence<indexes...>)
@@ -255,4 +263,4 @@ namespace mlib
         constexpr auto stdstring()            const noexcept { return std::string{ str.data }; }
     };
 } // namespace mlib
-// https://godbolt.org/z/qeaM4xWdj
+// https://godbolt.org/z/Ghee85T1n
