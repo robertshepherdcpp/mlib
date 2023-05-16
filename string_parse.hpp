@@ -84,6 +84,19 @@ namespace mlib
         }
     }
 
+    template<auto blur, auto other, auto until, auto index>
+    constexpr auto when_greater_than_idx()
+    {
+        if constexpr (index > until)
+        {
+            return blur;
+        }
+        else
+        {
+            return other;
+        }
+    }
+
     template<auto... Ts>
     struct container;
 
@@ -173,6 +186,16 @@ namespace mlib
             return [&] <std::size_t... indexes>(std::index_sequence<indexes...>)
             {
                 const char result[] = { (when_less_than_idx<c, str.data_[indexes], X, indexes>())..., '\0' };
+                return fixed_string{ result };
+            }(std::make_index_sequence<str.size()>{});
+        }
+
+        template<char c, int X>
+        constexpr auto blur_from() const noexcept
+        {
+            return[&] <std::size_t... indexes>(std::index_sequence<indexes...>)
+            {
+                const char result[] = { (when_greater_than_idx<c, str.data_[indexes], X, indexes>())..., '\0' };
                 return fixed_string{ result };
             }(std::make_index_sequence<str.size()>{});
         }
