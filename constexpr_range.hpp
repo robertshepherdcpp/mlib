@@ -130,6 +130,22 @@ namespace mlib
             return first_part + second_part;
         }
 
+        template<auto index, auto to_add>
+        constexpr auto add_at()
+        {
+            constexpr auto first_part = [&]<std::size_t... indexes>(std::index_sequence<indexes...>)
+            {
+                return constexpr_range<get_nth_element<indexes>(vals...)...>{};
+            }(std::make_index_sequence<sizeof...(vals)>{});
+
+            constexpr auto second_part = [&]<std::size_t... indexes>(std::index_sequence<indexes...>)
+            {
+                return constexpr_range<get_nth_element<indexes + index>(vals...)...>{};
+            }(std::make_index_sequence<sizeof...(vals) - index > {});
+
+            return (first_part + mlib::constexpr_range<to_add>{}) + second_part;
+        }
+
         template<auto index>
         constexpr auto at()
         {
