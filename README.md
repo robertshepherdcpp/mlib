@@ -334,5 +334,8 @@ struct string_parse
   
   template<char C>
   constexpr auto blur_with() const noexcept;
+  
+  template<char c, int X>
+  constexpr auto blur_until() const noexcept;
 };
 ```
