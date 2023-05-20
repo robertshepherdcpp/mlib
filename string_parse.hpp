@@ -210,6 +210,16 @@ namespace mlib
             }(std::make_index_sequence<str.size()>{});
         }
 
+        template<auto lambda>
+        constexpr auto remove_if_not() const noexcept
+        {
+            return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
+            {
+                constexpr char array[] = { if_is<lambda(str.template nth_element<indexes>()), str.template nth_element<indexes>(), ' '>{}()..., '\0' };
+                return fixed_string{ array };
+            }(std::make_index_sequence<str.size()>{});
+        }
+
         template<auto lambda, char c>
         constexpr auto replace_with_if() const noexcept
         {
