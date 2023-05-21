@@ -248,6 +248,15 @@ namespace mlib
             }(std::make_index_sequence<str.size() - from>{});
         }
 
+        template<auto character, auto until>
+        constexpr auto character_occurences_until() const noexcept
+        {
+            return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
+            {
+                return ((if_is<(indexes < until), (str.data[indexes] == character), 0>{}()) + ...);
+            }(std::make_index_sequence<str.size()>{});
+        }
+
         template<auto from, auto character>
         constexpr auto from_up_to() const noexcept
         {
