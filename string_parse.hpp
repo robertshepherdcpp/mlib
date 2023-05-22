@@ -271,12 +271,12 @@ namespace mlib
             return substr<index, size()>();
         }
 
-        template<auto A, auto B>
+        template<auto first, auto second>
         constexpr auto alternate_blur() const noexcept
         {
             return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
             {
-                constexpr char arr[] = {(if_is<((indexes % 2) == 0), A, B>{}())..., '\n'};
+                constexpr char arr[] = {(if_is<((indexes % 2) == 0), first, second>{}())..., '\n'};
                 return fixed_string{arr};
             }(std::make_index_sequence<str.size() - 1>{});
         }
