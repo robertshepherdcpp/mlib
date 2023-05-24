@@ -29,6 +29,7 @@ namespace mlib
     {
         static constexpr auto tag() { return str; }
         T value;
+        constexpr auto type() { return T{}; }
     };
 
     template<fixed_string str>
