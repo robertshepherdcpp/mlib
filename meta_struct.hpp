@@ -35,10 +35,10 @@ namespace mlib
     template<fixed_string str>
     struct value_
     {
-        template<auto t>
-        constexpr auto operator=(c_p<t>)
+        template<auto T>
+        constexpr auto operator=(c_p<T>)
         {
-            return member<str, t>{};
+            return member<str, T>{};
         }
     };
 
