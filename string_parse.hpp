@@ -270,7 +270,7 @@ namespace mlib
             constexpr auto index = find<from>();
             return substr<index, size()>();
         }
-
+ 
         template<auto first, auto second>
         constexpr auto alternate_blur() const noexcept
         {
