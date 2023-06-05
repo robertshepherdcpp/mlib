@@ -159,6 +159,9 @@
     <ClInclude Include="tuple_equal.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="swap.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

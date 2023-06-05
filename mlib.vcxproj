@@ -168,6 +168,7 @@
     <ClInclude Include="string_parse.hpp" />
     <ClInclude Include="sub_pack.hpp" />
     <ClInclude Include="sub_tuple.hpp" />
+    <ClInclude Include="swap.hpp" />
     <ClInclude Include="times.hpp" />
     <ClInclude Include="trait.hpp" />
     <ClInclude Include="transform.hpp" />
