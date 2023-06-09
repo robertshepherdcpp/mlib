@@ -162,6 +162,9 @@
     <ClInclude Include="swap.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="constexpr_tuple_accumulate.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

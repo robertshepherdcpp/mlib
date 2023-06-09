@@ -139,6 +139,7 @@
     <ClInclude Include="constexpr_map.hpp" />
     <ClInclude Include="constexpr_range.hpp" />
     <ClInclude Include="constexpr_switch.hpp" />
+    <ClInclude Include="constexpr_tuple_accumulate.hpp" />
     <ClInclude Include="constexpr_type_switch.hpp" />
     <ClInclude Include="constexpr_while.hpp" />
     <ClInclude Include="constructable_with.hpp" />
