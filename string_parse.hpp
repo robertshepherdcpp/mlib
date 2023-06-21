@@ -296,6 +296,24 @@ namespace mlib
                 return container<(str.template nth_element<indexes>())...>{};
             }(std::make_index_sequence<str.size()>{});
         }
+
+        template<char c>
+        constexpr auto all_characters_are() const noexcept
+        {
+            return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
+            {
+                return ((c == str.template nth_element<indexes>()) && ...);
+            }(std::make_index_sequence<str.size()>{});
+        }
+
+        template<char c>
+        constexpr auto all_characters_are_not() const noexcept
+        {
+            return[&]<std::size_t... indexes>(std::index_sequence<indexes...>)
+            {
+                return ((c != str.template nth_element<indexes>()) && ...);
+            }(std::make_index_sequence<str.size()>{});
+        }
         
         constexpr auto data()                 const noexcept { return str.data; }
         constexpr auto string_view()          const noexcept { return std::string_view{ str.data }; }
