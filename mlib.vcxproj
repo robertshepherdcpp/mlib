@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="all_of.hpp" />
     <ClInclude Include="amount.hpp" />
+    <ClInclude Include="apply.hpp" />
     <ClInclude Include="compile_time_while.hpp" />
     <ClInclude Include="constant_parameter.hpp" />
     <ClInclude Include="constexpr_for.hpp" />
