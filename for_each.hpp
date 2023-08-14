@@ -9,16 +9,12 @@
 
 namespace mlib
 {
-	template <typename... T, typename F, std::size_t... indexes>
-	constexpr auto for_each_helper(std::tuple<T...>& tuple, F& f, std::index_sequence<indexes...>) -> void
+   template<auto lambda, typename... Ts>
+	constexpr auto for_each(std::tuple<Ts...>& t)
 	{
-		int expand[] = { 0, ((f(std::get<indexes>(tuple))), void(), 0)... };
-		(void)expand;
-	}
-
-	template<typename F, typename... Ts>
-	constexpr auto for_each(std::tuple<Ts...>& t, F&& c)
-	{
-		for_each_helper(t, c, std::make_index_sequence<sizeof...(Ts)>{});
+		[=] <std::size_t... indexes>(std::index_sequence<indexes...>)
+		{
+			(std::get<indexes>(t), ...);
+		}(std::make_index_sequence<sizeof...(Ts)>{});
 	}
 } // namespace mlib
