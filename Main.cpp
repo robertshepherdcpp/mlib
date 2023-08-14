@@ -27,7 +27,7 @@ int main()
 {
 	// mlib::for_each
 	std::tuple<int, char, bool, double> t{ 42, 'c', true, 3.142 };
-	mlib::for_each(t, [](auto t) { std::cout << "val: " << t << "\n"; });
+	mlib::for_each<[](auto t) { std::cout << "val: " << t << "\n"; }>(t);
 
 	// mlib::transform
 	std::tuple<int, char, double> t2{ 42, 'c', 3.142 };
@@ -36,7 +36,7 @@ int main()
 	// mlib::select
 	std::tuple<char, bool, double> t3{ 'c', true, 3.142 };
 	auto tuple = mlib::select(t3, std::index_sequence<1, 2>{});
-	mlib::for_each(tuple, [](auto& t) {std::cout << "val: " << t << "\n"; });
+	mlib::for_each<[](auto& t) {std::cout << "val: " << t << "\n";} >(tuple);
 
 	// note need to add to less than:                 --\/, will print one hello.
 	mlib::constexpr_while < 0, [](int t) {t++; return t < 3; }, [&]() {std::cout << "Hello\n"; }, [](int t) {return t + 1; } > ();
