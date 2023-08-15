@@ -14,7 +14,7 @@ namespace mlib
 	{
 		[=] <std::size_t... indexes>(std::index_sequence<indexes...>)
 		{
-			(std::get<indexes>(t), ...);
+			(lambda(std::get<indexes>(t)), ...);
 		}(std::make_index_sequence<sizeof...(Ts)>{});
 	}
 } // namespace mlib
