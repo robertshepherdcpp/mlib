@@ -339,3 +339,14 @@ struct string_parse
   constexpr auto blur_until() const noexcept;
 };
 ```
+
+## Star History
+
+<a href="https://star-history.com/#robertshepherdcpp/mlib&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=robertshepherdcpp/mlib&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=robertshepherdcpp/mlib&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=robertshepherdcpp/mlib&type=Date" />
+  </picture>
+</a>
+
