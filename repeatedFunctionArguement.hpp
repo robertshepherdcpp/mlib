@@ -3,7 +3,7 @@
 #include<utility>    // std::index_sequence
 #include<functional> // std::function
 
-namespace std
+namespace mlib
 {
     template<typename Type, auto value>
     struct always_type_t
