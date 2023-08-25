@@ -18,7 +18,7 @@ namespace mlib
     struct repeatedFunctionArgument
     {
         constexpr repeatedFunctionArgument(auto function) { m_function = std::function{ function }; }
-        constexpr returnType callFunction() const noexcept { return m_function(); }
+        template<typename... Ts> constexpr returnType callFunction(Ts... args) const noexcept { return m_function(args); }
 
         using type = decltype(
             []<std::size_t... indexes>(std::index_sequence<indexes...>)
