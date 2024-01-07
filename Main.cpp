@@ -83,6 +83,7 @@ int main()
 		0 , [](mlib::constexpr_parameter<0>) { std::cout << "it is 0\n"; },
 		   [](mlib::constexpr_parameter<5>) { std::cout << "it is not 0\n"; },
 		   [](mlib::constexpr_parameter<'c'>) { std::cout << "it is 'c'\n";  },
+		   [](mlib::constexpr_parameter<true>) { std::cout << "it is true\n"; },
 		   [](auto) { std::cout << "I don't know what it is!\n"; } >
 		value{};
 	value();
