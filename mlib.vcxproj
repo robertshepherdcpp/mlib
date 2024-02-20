@@ -155,6 +155,7 @@
     <ClInclude Include="index_sequence.hpp" />
     <ClInclude Include="inlin_if.hpp" />
     <ClInclude Include="integral_constant.hpp" />
+    <ClInclude Include="iota.hpp" />
     <ClInclude Include="loop.hpp" />
     <ClInclude Include="meta_struct.hpp" />
     <ClInclude Include="one_of.hpp" />

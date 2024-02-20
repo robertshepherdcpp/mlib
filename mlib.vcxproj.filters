@@ -168,6 +168,9 @@
     <ClInclude Include="apply.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="iota.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
